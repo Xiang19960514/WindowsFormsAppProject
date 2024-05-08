@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsAppProject
 {
-    partial class setmeadetail
+    partial class setmealdetail
     {
         /// <summary>
         /// Required designer variable.
@@ -69,7 +69,7 @@
             this.txt商品描述.BackColor = System.Drawing.Color.White;
             this.txt商品描述.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt商品描述.Location = new System.Drawing.Point(16, 509);
-            this.txt商品描述.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt商品描述.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品描述.Multiline = true;
             this.txt商品描述.Name = "txt商品描述";
             this.txt商品描述.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -80,7 +80,7 @@
             // 
             this.txt商品價格.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt商品價格.Location = new System.Drawing.Point(145, 88);
-            this.txt商品價格.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt商品價格.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品價格.Name = "txt商品價格";
             this.txt商品價格.Size = new System.Drawing.Size(155, 34);
             this.txt商品價格.TabIndex = 14;
@@ -89,7 +89,7 @@
             // 
             this.txt商品名稱.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt商品名稱.Location = new System.Drawing.Point(145, 35);
-            this.txt商品名稱.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt商品名稱.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品名稱.Name = "txt商品名稱";
             this.txt商品名稱.Size = new System.Drawing.Size(219, 34);
             this.txt商品名稱.TabIndex = 13;
@@ -151,7 +151,7 @@
             this.button2.BackColor = System.Drawing.Color.DarkOrange;
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button2.Location = new System.Drawing.Point(428, 602);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 70);
             this.button2.TabIndex = 21;
@@ -163,14 +163,14 @@
             this.button1.BackColor = System.Drawing.Color.LightCoral;
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.Location = new System.Drawing.Point(428, 509);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 70);
             this.button1.TabIndex = 22;
             this.button1.Text = "確認餐點";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // setmeadetail
+            // setmealdetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,7 +189,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "setmeadetail";
+            this.Name = "setmealdetail";
             this.Text = "setmeadetail";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

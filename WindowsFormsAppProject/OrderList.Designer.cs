@@ -45,7 +45,7 @@
             this.btn繼續訂購關閉.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn繼續訂購關閉.ForeColor = System.Drawing.Color.Maroon;
             this.btn繼續訂購關閉.Location = new System.Drawing.Point(345, 345);
-            this.btn繼續訂購關閉.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn繼續訂購關閉.Margin = new System.Windows.Forms.Padding(4);
             this.btn繼續訂購關閉.Name = "btn繼續訂購關閉";
             this.btn繼續訂購關閉.Size = new System.Drawing.Size(288, 48);
             this.btn繼續訂購關閉.TabIndex = 19;
@@ -58,7 +58,7 @@
             this.btn輸出訂購單.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn輸出訂購單.ForeColor = System.Drawing.Color.Blue;
             this.btn輸出訂購單.Location = new System.Drawing.Point(345, 465);
-            this.btn輸出訂購單.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn輸出訂購單.Margin = new System.Windows.Forms.Padding(4);
             this.btn輸出訂購單.Name = "btn輸出訂購單";
             this.btn輸出訂購單.Size = new System.Drawing.Size(288, 48);
             this.btn輸出訂購單.TabIndex = 18;
@@ -71,7 +71,7 @@
             this.btn清除所有品項.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn清除所有品項.ForeColor = System.Drawing.Color.Red;
             this.btn清除所有品項.Location = new System.Drawing.Point(345, 405);
-            this.btn清除所有品項.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn清除所有品項.Margin = new System.Windows.Forms.Padding(4);
             this.btn清除所有品項.Name = "btn清除所有品項";
             this.btn清除所有品項.Size = new System.Drawing.Size(288, 48);
             this.btn清除所有品項.TabIndex = 17;
@@ -83,7 +83,7 @@
             // 
             this.btn移除所選品項.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn移除所選品項.Location = new System.Drawing.Point(345, 285);
-            this.btn移除所選品項.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn移除所選品項.Margin = new System.Windows.Forms.Padding(4);
             this.btn移除所選品項.Name = "btn移除所選品項";
             this.btn移除所選品項.Size = new System.Drawing.Size(288, 48);
             this.btn移除所選品項.TabIndex = 16;
@@ -97,7 +97,7 @@
             this.lbox訂購品項列表.FormattingEnabled = true;
             this.lbox訂購品項列表.ItemHeight = 33;
             this.lbox訂購品項列表.Location = new System.Drawing.Point(13, 63);
-            this.lbox訂購品項列表.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbox訂購品項列表.Margin = new System.Windows.Forms.Padding(4);
             this.lbox訂購品項列表.Name = "lbox訂購品項列表";
             this.lbox訂購品項列表.Size = new System.Drawing.Size(317, 532);
             this.lbox訂購品項列表.TabIndex = 15;
@@ -121,7 +121,7 @@
             this.lbl買購物袋.Location = new System.Drawing.Point(487, 240);
             this.lbl買購物袋.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl買購物袋.Name = "lbl買購物袋";
-            this.lbl買購物袋.Size = new System.Drawing.Size(104, 21);
+            this.lbl買購物袋.Size = new System.Drawing.Size(105, 23);
             this.lbl買購物袋.TabIndex = 13;
             this.lbl買購物袋.Text = "買購物袋";
             // 
@@ -176,9 +176,10 @@
             this.Controls.Add(this.lbl外帶);
             this.Controls.Add(this.lbl訂購人資料);
             this.Controls.Add(this.lbl訂購品項列表);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OrderList";
             this.Text = "OrderList";
+            this.Load += new System.EventHandler(this.OrderList_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

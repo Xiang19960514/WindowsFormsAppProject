@@ -300,5 +300,17 @@ namespace WindowsFormsAppProject
             讀取產品的內容(strSQL);
             顯示圖片列表();
         }
+
+        private void btn查看購物車_Click(object sender, EventArgs e)
+        {
+            OrderList myOrderListForm = new OrderList();           
+            myOrderListForm.ShowDialog();//獨佔開啟
+        }
+
+        private void btn系統管理_Click_1(object sender, EventArgs e)
+        {
+            Manage manage = new Manage();
+            manage.ShowDialog();
+        }
     }
 }

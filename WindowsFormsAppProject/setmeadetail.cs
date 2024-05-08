@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppProject
 {
-    public partial class setmeadetail : Form
+    public partial class setmealdetail : Form
     {
-        public setmeadetail()
+        public setmealdetail()
         {
             InitializeComponent();
         }

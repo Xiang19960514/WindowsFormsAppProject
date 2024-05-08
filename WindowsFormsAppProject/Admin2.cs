@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppProject
 {
-    public partial class OrderList : Form
+    public partial class Admin2 : Form
     {
-        public OrderList()
+        public Admin2()
         {
             InitializeComponent();
-        }
-
-        private void OrderList_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }
