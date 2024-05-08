@@ -92,7 +92,6 @@ namespace WindowsFormsAppProject
             strMsg += $"資料筆數 : {count}";
             reader.Close();
             con.Close();
-            MessageBox.Show(strMsg);
         }
     }
 }
