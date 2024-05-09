@@ -14,8 +14,8 @@ namespace WindowsFormsAppProject
     public partial class Form1 : Form
     {       
         //string image_dir = @"C:\Users\del79\OneDrive\桌面\WindowsFormsApp1學生資料查詢\圖片";
-        string image_products = @"C:\Users\del79\OneDrive\桌面\我的專題\專題圖片\單點圖片";
-        string image_setmeal = @"C:\Users\del79\OneDrive\桌面\我的專題\專題圖片\套餐圖片";
+        string image_products = @"C:\Users\del79\OneDrive\桌面\我的專題\轉檔圖片\轉檔後單點";
+        string image_setmeal = @"C:\Users\del79\OneDrive\桌面\我的專題\轉檔圖片\轉檔後套餐";
         List<int> ID = new List<int>();//產品編號
         List<string> Name1 = new List<string>();//產品名稱
         List<string> price = new List<string>();//價格
@@ -180,7 +180,7 @@ namespace WindowsFormsAppProject
             
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();
-            string strSQL = "select top(8)* from products where Category = '主餐'"; //設變數 帶入sql語法
+            string strSQL = "select * from products where Category = '主餐'"; //設變數 帶入sql語法
             SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫
             //cmd.Parameters.AddWithValue("@")
             SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
@@ -311,6 +311,37 @@ namespace WindowsFormsAppProject
         {
             Manage manage = new Manage();
             manage.ShowDialog();
+        }
+
+        private void btn配餐_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
+            con.Open();
+            string strSQL = "select * from products where Category = '配餐'"; //設變數 帶入sql語法
+            SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫
+            //cmd.Parameters.AddWithValue("@")
+            SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
+            //cmd = 所有資料的欄位表格 然後轉給reader
+            string strMsg = "";
+            int count = 0;
+            listView圖片.Items.Clear();
+            image_picture.Images.Clear();
+            Name1.Clear();
+            ID.Clear();
+            while (reader.Read() == true) //這裡就是讀取 然後打欄位表格的資料 sid sname 等等 型態
+            {
+                string 照片 = (string)reader["pictures"];
+
+                strMsg += $"{照片}\n";  //如果只有打=的話 就只會跑一次 因為是迴圈 要讓他一直跑 所以是+=
+                count++;
+            }
+
+            strMsg += "--------------------------------";
+            strMsg += $"資料筆數 : {count}";
+            reader.Close();
+            con.Close();
+            讀取產品的內容(strSQL);
+            顯示圖片列表();
         }
     }
 }

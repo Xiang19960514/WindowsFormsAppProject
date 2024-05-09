@@ -88,6 +88,7 @@
             this.btn配餐.TabIndex = 3;
             this.btn配餐.Text = "配餐";
             this.btn配餐.UseVisualStyleBackColor = false;
+            this.btn配餐.Click += new System.EventHandler(this.btn配餐_Click_1);
             // 
             // btn飲料
             // 

@@ -13,6 +13,12 @@ namespace WindowsFormsAppProject
 {
     public partial class Manage : Form
     {
+        public int loadId = 0;
+        string str修改後圖檔名稱 = "";
+        bool is修改圖檔 = false;
+        List<string> list類別 = new List<string>();
+        string 類別 = "";
+        int dgv筆數 = 0;
         public Manage()
         {
             InitializeComponent();
@@ -25,73 +31,274 @@ namespace WindowsFormsAppProject
             scsb.IntegratedSecurity = true;
             scsb.Encrypt = false;
             GlobalVar.strDBConnectionString = scsb.ConnectionString;//連線資料庫
+            cbox類別.Items.Add("套餐");
+            cbox類別.Items.Add("主餐");
+            cbox類別.Items.Add("配餐");
+            cbox類別.Items.Add("飲料");
+            cbox類別.Items.Add("點心");
+            cbox類別.SelectedIndex = 0;
+
+            cbox欄位名稱.Items.Add("ProductID");
+            cbox欄位名稱.Items.Add("ProductName");
+            cbox欄位名稱.Items.Add("Inventory");
+            cbox欄位名稱.Items.Add("Price");
+            cbox欄位名稱.Items.Add("Category");
+            cbox欄位名稱.Items.Add("Description");
+            顯示所有商品();
+
+
+
         }
 
         private void btn商品上架_Click(object sender, EventArgs e)
-        {
-            if (txt商品編號.Text != "" && txt商品名稱.Text != "" && txt商品類別.Text != "" && txt商品價格.Text != "" && txt商品存貨.Text != "") //空字串不等於null 所以要改成null
+        {                               //txt.類別
+            if (txt商品名稱.Text != "" && cbox類別.Text != "" && txt商品價格.Text != "" && txt商品存貨.Text != "" && pbox商品圖片.Image != null) //空字串不等於null 所以要改成null
             {
                 SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
                 con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
-                string strSQL = "insert into student values(@productID ,@productname ,@Category, @Price, @Inventory );";
+                string strSQL = "insert into products values(@productname , @Inventory, @Price, @Category , @Description, @pboxPictures)";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
-                cmd.Parameters.AddWithValue("@productID", txt商品編號.Text);
+                
                 cmd.Parameters.AddWithValue("@productname", txt商品名稱.Text);
-                cmd.Parameters.AddWithValue("@Category", txt商品類別.Text); //雙引號只需要前面那段變數名 後面路徑不需要
-                cmd.Parameters.AddWithValue("@Price", txt商品價格.Text);
                 cmd.Parameters.AddWithValue("@Inventory", txt商品存貨.Text);
+                int intPrice = 0;
+                Int32.TryParse(txt商品價格.Text, out intPrice);
+                cmd.Parameters.AddWithValue("@Price", intPrice);
+                cmd.Parameters.AddWithValue("@Category", cbox類別.SelectedItem); //雙引號只需要前面那段變數名 後面路徑不需要              
+                cmd.Parameters.AddWithValue("@Description", txt商品描述.Text);
+                cmd.Parameters.AddWithValue("@pboxPictures", str修改後圖檔名稱);
 
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
 
-                MessageBox.Show($"資訊新增成功,影響{rows}筆資料");
+
+
+                if (is修改圖檔 == true)
+                {
+                    string 完整圖檔路徑 = GlobalVar.image_dir + @"\" + str修改後圖檔名稱;
+                    pbox商品圖片.Image.Save(完整圖檔路徑);
+                    is修改圖檔 = false;
+                }
+
+                MessageBox.Show($"資料新增成功, 影響{rows}筆資料");
             }
-            else
+            else 
             {
-                MessageBox.Show("新增資料失敗");
+                MessageBox.Show("新增失敗");
             }
+
         }
 
         private void btn商品修改_Click(object sender, EventArgs e)
         {
+            if (txt商品名稱.Text != "" && cbox類別.Text != "" && txt商品價格.Text != "" && txt商品存貨.Text != "" && pbox商品圖片.Image != null) //空字串不等於null 所以要改成null
+            {
+                SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+                con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
+                           
+                //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+                string strSQL = "update products set productname = @productname , Inventory =@Inventory, Price = @Price , Category =@Category, Description = @Description ";
+                if (is修改圖檔 == true)
+                {
+                    strSQL += ", pictures = @pboxPictures ";
 
-        }
+                }
+                strSQL += "where ProductID = @productID";
+                // 等號前面是SQL的欄位名稱 後面是底下的變數名稱 逗點後面是你要存放的位置
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@ProductID", txt商品編號.Text);
+                cmd.Parameters.AddWithValue("@productname", txt商品名稱.Text);
+                cmd.Parameters.AddWithValue("@Inventory", txt商品存貨.Text);
+                int intPrice = 0;
+                Int32.TryParse(txt商品價格.Text, out intPrice);
+                cmd.Parameters.AddWithValue("@Price", intPrice);
+                cmd.Parameters.AddWithValue("@Category", cbox類別.SelectedItem); //雙引號只需要前面那段變數名 後面路徑不需要           
+                cmd.Parameters.AddWithValue("@Description", txt商品描述.Text);
+                
+               
+                
 
-        private void btn清除_Click(object sender, EventArgs e)
+                if (is修改圖檔 == true)
+                {
+                    cmd.Parameters.AddWithValue("@pboxPictures", str修改後圖檔名稱);
+                    //image_dir = 完整路徑(class有寫入)+\(資料夾最後面都會有一個\) + 可以從SQL語法編輯查詢
+                    string 完整圖檔路徑 = GlobalVar.image_dir + @"\" + str修改後圖檔名稱;
+                    //str修改後圖檔名稱 = DateTime.Now.ToString("yyMMddHHmmss") + myRnd.Next(1000, 10000).ToString() + str圖檔副檔名;
+                    pbox商品圖片.Image.Save(完整圖檔路徑);//存檔
+                    is修改圖檔 = false;
+                }
+                int rows = cmd.ExecuteNonQuery();//完成         
+                con.Close();
+                MessageBox.Show($"商品修改成功,影響{rows}筆資料");
+            }
+            else
+            {
+                MessageBox.Show("商品修改失敗");
+            }
+        }   
+
+        private void btn選擇圖片_Click(object sender, EventArgs e)
         {
+            選取商品圖片();
+        }
+        void 選取商品圖片()
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "檔案類型(JPEG, JPG, PNG)|*.jpeg;*.jpg;*.png";
+
+            DialogResult R = fileDialog.ShowDialog();
+
+            if (R == DialogResult.OK)
+            {
+                System.IO.FileStream fs = System.IO.File.OpenRead(fileDialog.FileName);
+                pbox商品圖片.Image = Image.FromStream(fs);
+                fs.Close();
+                //pbox商品圖片.Tag = fileDialog.FileName;
+                string str圖檔副檔名 = System.IO.Path.GetExtension(fileDialog.SafeFileName).ToLower();
+                Random myRnd = new Random();
+                str修改後圖檔名稱 = DateTime.Now.ToString("yyMMddHHmmss") + myRnd.Next(1000, 10000).ToString() + str圖檔副檔名;
+                is修改圖檔 = true;
+                Console.WriteLine(str修改後圖檔名稱);
+            }
+        }
+        void 清除欄位() 
+        {
+            txt商品編號.Clear();
+            txt商品價格.Clear();
+            txt商品存貨.Clear();
+            txt商品名稱.Clear();
+            txt商品描述.Clear();
+            cbox類別.SelectedIndex = 0;
+        }
+        private void btn欄位清除_Click(object sender, EventArgs e)
+        {
+            清除欄位();
+            
 
         }
 
-        private void btn資料測試_Click(object sender, EventArgs e)
+        private void btn搜尋_Click(object sender, EventArgs e)
+        {
+            if (txt搜尋關鍵字.Text != "")
+            {
+                string str搜尋欄位 = cbox欄位名稱.SelectedItem.ToString();
+                SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
+                con.Open();//打開連接資料庫                                連接都會有and 所以上面性別選擇前面才會多加and
+                string strSQL = $"select * from products where {str搜尋欄位} like @Name"; //設變數 帶入sql語法
+                SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫
+                cmd.Parameters.AddWithValue("@Name", $"%{txt搜尋關鍵字.Text.Trim()}%"); //有模糊字串所以有% 所以要用雙引號把兩個都帶進去 這樣就要用                                                                  
+
+                SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
+                                                            //cmd = 所有資料的欄位表格 然後轉給reader
+
+                if (reader.HasRows == true) //去讀整張select表 有讀到東西就是true 讀不到東西就是false
+                {
+                    DataTable dt = new DataTable();//創建資料表
+                    dt.Load(reader);// 將資料放進資料表
+                    dgv筆數 = dt.Rows.Count;
+                    dgv資料表.DataSource = dt; //資料表呈現 所以是放最後
+                }
+
+                reader.Close();
+                con.Close();
+            }
+            else 
+            {
+                MessageBox.Show("搜尋資料失敗");
+            }
+        }
+        void 顯示所有商品() 
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
-            con.Open();//打開連接資料庫
+            con.Open();//打開連接資料庫                                連接都會有and 所以上面性別選擇前面才會多加and
+            string strSQL = $"select * from products"; //設變數 帶入sql語法
+            SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫
+            //有模糊字串所以有% 所以要用雙引號把兩個都帶進去 這樣就要用                                                                  
 
-            string strSQL = "select * from Products"; //設變數 帶入sql語法
-            SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫    
             SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
-            //cmd = 所有資料的欄位表格 然後轉給reader
-            string strMsg = "";
-            int count = 0;
+                                                        //cmd = 所有資料的欄位表格 然後轉給reader
 
-            while (reader.Read() == true) //這裡就是讀取 然後打欄位表格的資料 sid sname 等等 型態
+            if (reader.HasRows == true) //去讀整張select表 有讀到東西就是true 讀不到東西就是false
             {
-                string 商品編號 = (string)reader["ProductID"];
-                string 商品名稱 = (string)reader["ProductName"];
-                int 庫存量 = (int)reader["Inventory"];
-                int 商品價格 = (int)reader["Price"];
-                string 商品分類 = (string)reader["Category"];
-                string 商品描述 = (string)reader[]
-               
-
-                strMsg += $"{id}{姓名}{性別}{年齡}{生日}\n";  //如果只有打=的話 就只會跑一次 因為是迴圈 要讓他一直跑 所以是+=
-
+                DataTable dt = new DataTable();//創建資料表
+                dt.Load(reader);// 將資料放進資料表
+                dgv筆數 = dt.Rows.Count;
+                dgv資料表.DataSource = dt; //資料表呈現 所以是放最後
             }
 
-            strMsg += "--------------------------------";
-            strMsg += $"資料筆數 : {count}";
             reader.Close();
             con.Close();
         }
+        void 顯示所選資料(int 商品編號)
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
+            con.Open();//打開連接資料庫
+            //string strSQL = $"select * from student where s_id @id"; //設變數 帶入sql語法 沒寫= 所以是錯的 其他不寫=是因為在SQL語法條件判斷的時候沒有用到=
+            string strSQL = $"select * from Products where Productid = @id";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@id", 商品編號);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read() == true) //這裡就是讀取 然後打欄位表格的資料 sid sname 等等 型態
+            {
+                txt商品編號.Text = reader["Productid"].ToString();
+                txt商品名稱.Text = reader["Productname"].ToString();
+                cbox類別.SelectedItem = reader["Category"].ToString();
+                txt商品存貨.Text = reader["Inventory"].ToString();
+                txt商品價格.Text = reader["Price"].ToString();
+                txt商品描述.Text = reader["Description"].ToString();
+                
+                string image檔名 = (string)reader["pictures"];
+                string 完整圖檔路徑 = $"{GlobalVar.image_dir}\\{image檔名}";
+                System.IO.FileStream fs = System.IO.File.OpenRead(完整圖檔路徑);//FileStream 建立空間 存取圖檔路徑 
+                //新增會成功 但是沒辦法點選 一定要去SQL把圖檔名稱修正才不會出現DEBUG
+
+
+                // Image 存入圖片的檔案型態 取變數名 = Image.
+                pbox商品圖片.Image = Image.FromStream(fs);
+                fs.Close();
+            }
+
+
+            reader.Close();
+            con.Close();
+
+        }
+       
+        private void dgv資料表_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && (e.RowIndex < dgv筆數)) //搜尋後點任一欄位資料  就會把該欄位的資料 顯示到上面的表格 (點選資料是最下面的表格)
+            {  //rowindex是他的語法 
+                string strId = dgv資料表.Rows[e.RowIndex].Cells[0].Value.ToString();
+                //e=你滑鼠點到的任何一欄 rowindex就會帶到那一個索引 然後cells[0]是判別欄位的索引順序
+               
+                int selectID = 0;      
+                Int32.TryParse(strId, out selectID);
+
+                顯示所選資料(selectID);
+
+            }
+        }
+
+        private void btn商品下架_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
+            con.Open();
+            string strSQL = "Delete Products where ProductID =@ProductID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.Add("@ProductID", txt商品編號.Text);
+
+            int num = cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show($"刪除{num}筆資料");
+            清除欄位();
+
+        }
+
+        private void btn重新整理_Click(object sender, EventArgs e)
+        {
+            顯示所有商品();
+        }
     }
-}
+}//做CBOX分類別 圖片BUG已修復 
+//檢查為何開了CBOX類別選項 新增後不會出現在選單裡 但是TXT類別也一起打的話就可以  但主餐不行 幹
