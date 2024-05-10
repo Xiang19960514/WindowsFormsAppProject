@@ -14,8 +14,8 @@ namespace WindowsFormsAppProject
     public partial class Form1 : Form
     {       
         //string image_dir = @"C:\Users\del79\OneDrive\桌面\WindowsFormsApp1學生資料查詢\圖片";
-        string image_products = @"C:\Users\del79\OneDrive\桌面\我的專題\轉檔圖片\轉檔後單點";
-        string image_setmeal = @"C:\Users\del79\OneDrive\桌面\我的專題\轉檔圖片\轉檔後套餐";
+        
+        
         List<int> ID = new List<int>();//產品編號
         List<string> Name1 = new List<string>();//產品名稱
         List<string> price = new List<string>();//價格
@@ -67,7 +67,7 @@ namespace WindowsFormsAppProject
                 Name1.Add((string)reader["productname"]);
                 price.Add(reader["price"].ToString());//改型態
                 string image檔名 = (string)reader["pictures"];
-                string 完整圖檔路徑 = $"{image_products}\\{image檔名}";  //單點圖片的void
+                string 完整圖檔路徑 = $"{GlobalVar.image_dir}\\{image檔名}";  //單點圖片的void
 
                 Console.WriteLine($"{完整圖檔路徑}");
                  // image_products = @"C:\Users\del79\OneDrive\桌面\我的專題\專題圖片\單點圖片
@@ -109,11 +109,11 @@ namespace WindowsFormsAppProject
             {
                 ID.Add((int)reader["setID"]);//reader=hashtable意思是沒有資料型態 所以前面要打上型態 reader 後面要打上[欄位名稱]
                 Name1.Add((string)reader["setName"]);
-                
+                //reader讀出來 add.放進去
                 string image檔名 = (string)reader["pictures"];
-                string 完整圖檔路徑 = $"{image_setmeal}\\{image檔名}";
+                string 完整圖檔路徑 = $"{GlobalVar.image_setmeal}\\{image檔名}";
 
-                Console.WriteLine($"{完整圖檔路徑}");
+                //Console.WriteLine($"{完整圖檔路徑}");
 
                 // 創建圖檔路徑存放空間 fs=所有圖片路徑 那個資料夾的位置 還不是讀檔案  system IO可以省略
                 System.IO.FileStream fs = System.IO.File.OpenRead(完整圖檔路徑);//FileStream 建立空間 存取圖檔路徑 
