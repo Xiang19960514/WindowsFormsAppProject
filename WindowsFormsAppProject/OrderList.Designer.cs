@@ -32,12 +32,12 @@
             this.btn輸出訂購單 = new System.Windows.Forms.Button();
             this.btn清除所有品項 = new System.Windows.Forms.Button();
             this.btn移除所選品項 = new System.Windows.Forms.Button();
-            this.lbox訂購品項列表 = new System.Windows.Forms.ListBox();
             this.lbl訂單總價 = new System.Windows.Forms.Label();
             this.lbl買購物袋 = new System.Windows.Forms.Label();
             this.lbl外帶 = new System.Windows.Forms.Label();
             this.lbl訂購人資料 = new System.Windows.Forms.Label();
             this.lbl訂購品項列表 = new System.Windows.Forms.Label();
+            this.listView商品展示 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // btn繼續訂購關閉
@@ -62,7 +62,7 @@
             this.btn輸出訂購單.Name = "btn輸出訂購單";
             this.btn輸出訂購單.Size = new System.Drawing.Size(288, 48);
             this.btn輸出訂購單.TabIndex = 18;
-            this.btn輸出訂購單.Text = "輸出訂購單txt";
+            this.btn輸出訂購單.Text = "輸出訂購單";
             this.btn輸出訂購單.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn輸出訂購單.UseVisualStyleBackColor = true;
             // 
@@ -90,17 +90,6 @@
             this.btn移除所選品項.Text = "移除所選品項";
             this.btn移除所選品項.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn移除所選品項.UseVisualStyleBackColor = true;
-            // 
-            // lbox訂購品項列表
-            // 
-            this.lbox訂購品項列表.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbox訂購品項列表.FormattingEnabled = true;
-            this.lbox訂購品項列表.ItemHeight = 33;
-            this.lbox訂購品項列表.Location = new System.Drawing.Point(13, 63);
-            this.lbox訂購品項列表.Margin = new System.Windows.Forms.Padding(4);
-            this.lbox訂購品項列表.Name = "lbox訂購品項列表";
-            this.lbox訂購品項列表.Size = new System.Drawing.Size(317, 532);
-            this.lbox訂購品項列表.TabIndex = 15;
             // 
             // lbl訂單總價
             // 
@@ -161,16 +150,25 @@
             this.lbl訂購品項列表.TabIndex = 10;
             this.lbl訂購品項列表.Text = "訂購品項列表";
             // 
+            // listView商品展示
+            // 
+            this.listView商品展示.HideSelection = false;
+            this.listView商品展示.Location = new System.Drawing.Point(1, 63);
+            this.listView商品展示.Name = "listView商品展示";
+            this.listView商品展示.Size = new System.Drawing.Size(337, 526);
+            this.listView商品展示.TabIndex = 20;
+            this.listView商品展示.UseCompatibleStateImageBehavior = false;
+            // 
             // OrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 600);
+            this.ClientSize = new System.Drawing.Size(641, 601);
+            this.Controls.Add(this.listView商品展示);
             this.Controls.Add(this.btn繼續訂購關閉);
             this.Controls.Add(this.btn輸出訂購單);
             this.Controls.Add(this.btn清除所有品項);
             this.Controls.Add(this.btn移除所選品項);
-            this.Controls.Add(this.lbox訂購品項列表);
             this.Controls.Add(this.lbl訂單總價);
             this.Controls.Add(this.lbl買購物袋);
             this.Controls.Add(this.lbl外帶);
@@ -191,11 +189,11 @@
         private System.Windows.Forms.Button btn輸出訂購單;
         private System.Windows.Forms.Button btn清除所有品項;
         private System.Windows.Forms.Button btn移除所選品項;
-        private System.Windows.Forms.ListBox lbox訂購品項列表;
         private System.Windows.Forms.Label lbl訂單總價;
         private System.Windows.Forms.Label lbl買購物袋;
         private System.Windows.Forms.Label lbl外帶;
         private System.Windows.Forms.Label lbl訂購人資料;
         private System.Windows.Forms.Label lbl訂購品項列表;
+        private System.Windows.Forms.ListView listView商品展示;
     }
 }

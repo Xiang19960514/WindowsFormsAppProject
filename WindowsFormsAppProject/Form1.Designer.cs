@@ -43,7 +43,7 @@
             // listView圖片
             // 
             this.listView圖片.HideSelection = false;
-            this.listView圖片.Location = new System.Drawing.Point(187, 23);
+            this.listView圖片.Location = new System.Drawing.Point(186, 23);
             this.listView圖片.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView圖片.Name = "listView圖片";
             this.listView圖片.Size = new System.Drawing.Size(605, 510);

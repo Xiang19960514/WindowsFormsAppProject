@@ -19,6 +19,7 @@ namespace WindowsFormsAppProject
         List<int> ID = new List<int>();//產品編號
         List<string> Name1 = new List<string>();//產品名稱
         List<string> price = new List<string>();//價格
+        
 
         public Form1()
         {
@@ -28,8 +29,8 @@ namespace WindowsFormsAppProject
         {
             listView圖片.Items.Clear();//每次呼叫換就會清空
 
-            //listView商品展示.View = View.LargeIcon;  // 大圖示列表   列表模式
-            //listView商品展示.View = View.Tile;  // 橫向列表
+            //listView圖片.View = View.LargeIcon;  // 大圖示列表   列表模式
+            //listView圖片.View = View.Tile;  // 橫向列表
             listView圖片.View = View.List;  // 直向列表
 
             image_picture.ImageSize = new Size(70, 70);//像素
@@ -45,7 +46,7 @@ namespace WindowsFormsAppProject
                 // i=索引 放入迴圈 跑圖片
                 item.ImageIndex = i;
                 item.Text = $"{Name1[i]}";
-                // item.Tag = listId[i];  // 沒用到的藏起來
+                item.Tag = ID[i];  // 沒用到的藏起來
                 item.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
                 listView圖片.Items.Add(item);
             }
@@ -131,7 +132,7 @@ namespace WindowsFormsAppProject
        
         private void btn套餐_Click(object sender, EventArgs e)
         {
-            
+            GlobalVar.內容各別顯示 = 1;
             //setmeadetail form2 = new setmeadetail();
             //form2.ShowDialog(); 
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
@@ -170,14 +171,19 @@ namespace WindowsFormsAppProject
         private void listView圖片_ItemActivate(object sender, EventArgs e)
         {
             
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "檔案類型(JPEG, JPG, PNG)|*.jpeg*;.jpg;*.png";//設定檔案類型
-
+            //OpenFileDialog fileDialog = new OpenFileDialog();
+            setmealdetail setmealdetail = new setmealdetail();
+            GlobalVar.商品ID = (int)listView圖片.SelectedItems[0].Tag;
+            //Console.WriteLine(GlobalVar.商品ID);
+            setmealdetail.ShowDialog();
+            //fileDialog.Filter = "檔案類型(JPEG, JPG, PNG)|*.jpeg*;.jpg;*.png";//設定檔案類型
+            Console.WriteLine(GlobalVar.商品ID);
+                
         }
 
         private void btn主餐_Click(object sender, EventArgs e)
         {
-            
+            GlobalVar.內容各別顯示 = 0;
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();
             string strSQL = "select * from products where Category = '主餐'"; //設變數 帶入sql語法
@@ -241,6 +247,7 @@ namespace WindowsFormsAppProject
 
         private void btn飲料_Click(object sender, EventArgs e)
         {
+            GlobalVar.內容各別顯示 = 0;
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();
             string strSQL = "select * from products where Category = '飲料'"; //設變數 帶入sql語法
@@ -272,6 +279,7 @@ namespace WindowsFormsAppProject
 
         private void btn點心_Click(object sender, EventArgs e)
         {
+            GlobalVar.內容各別顯示 = 0;
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();
             string strSQL = "select * from products where Category = '點心'"; //設變數 帶入sql語法
@@ -315,6 +323,8 @@ namespace WindowsFormsAppProject
 
         private void btn配餐_Click_1(object sender, EventArgs e)
         {
+
+            GlobalVar.內容各別顯示 = 0;
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();
             string strSQL = "select * from products where Category = '配餐'"; //設變數 帶入sql語法

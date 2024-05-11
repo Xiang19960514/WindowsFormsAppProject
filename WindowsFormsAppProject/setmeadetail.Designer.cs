@@ -28,47 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txt商品描述 = new System.Windows.Forms.TextBox();
             this.txt商品價格 = new System.Windows.Forms.TextBox();
             this.txt商品名稱 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt商品數量 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 171);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(345, 288);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(13, 138);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 31);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "套餐圖片";
             // 
             // txt商品描述
             // 
             this.txt商品描述.BackColor = System.Drawing.Color.White;
             this.txt商品描述.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt商品描述.Location = new System.Drawing.Point(16, 509);
+            this.txt商品描述.Location = new System.Drawing.Point(19, 223);
             this.txt商品描述.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品描述.Multiline = true;
             this.txt商品描述.Name = "txt商品描述";
@@ -79,7 +56,7 @@
             // txt商品價格
             // 
             this.txt商品價格.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt商品價格.Location = new System.Drawing.Point(145, 88);
+            this.txt商品價格.Location = new System.Drawing.Point(145, 90);
             this.txt商品價格.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品價格.Name = "txt商品價格";
             this.txt商品價格.Size = new System.Drawing.Size(155, 34);
@@ -98,7 +75,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(13, 475);
+            this.label5.Location = new System.Drawing.Point(13, 188);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 31);
@@ -127,21 +104,11 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "商品名稱";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(438, 454);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 30);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "餐點數量";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(381, 256);
+            this.label7.Location = new System.Drawing.Point(378, 293);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(0, 30);
             this.label7.TabIndex = 18;
@@ -150,7 +117,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.DarkOrange;
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(428, 602);
+            this.button2.Location = new System.Drawing.Point(428, 315);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 70);
@@ -162,54 +129,71 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCoral;
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(428, 509);
+            this.button1.Location = new System.Drawing.Point(428, 222);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 70);
             this.button1.TabIndex = 22;
-            this.button1.Text = "確認餐點";
+            this.button1.Text = "加入購物車";
             this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(13, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 31);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "商品數量";
+            // 
+            // txt商品數量
+            // 
+            this.txt商品數量.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt商品數量.Location = new System.Drawing.Point(145, 141);
+            this.txt商品數量.Margin = new System.Windows.Forms.Padding(4);
+            this.txt商品數量.Name = "txt商品數量";
+            this.txt商品數量.Size = new System.Drawing.Size(69, 34);
+            this.txt商品數量.TabIndex = 24;
             // 
             // setmealdetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(612, 688);
+            this.ClientSize = new System.Drawing.Size(607, 429);
+            this.Controls.Add(this.txt商品數量);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txt商品描述);
             this.Controls.Add(this.txt商品價格);
             this.Controls.Add(this.txt商品名稱);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "setmealdetail";
             this.Text = "setmeadetail";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.setmealdetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt商品描述;
         private System.Windows.Forms.TextBox txt商品價格;
         private System.Windows.Forms.TextBox txt商品名稱;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt商品數量;
     }
 }

@@ -21,6 +21,8 @@ namespace WindowsFormsAppProject
         string 類別 = "";
         int dgv筆數 = 0;
         int dgv筆數2 = 0;
+        string image檔名;
+        string image套餐檔名;
         public Manage()
         {
             InitializeComponent();
@@ -69,21 +71,27 @@ namespace WindowsFormsAppProject
                 int intPrice = 0;
                 Int32.TryParse(txt商品價格.Text, out intPrice);
                 cmd.Parameters.AddWithValue("@Price", intPrice);
-                cmd.Parameters.AddWithValue("@Category", cbox類別.SelectedItem); //雙引號只需要前面那段變數名 後面路徑不需要              
+                cmd.Parameters.AddWithValue("@Category", cbox類別.SelectedItem); //雙引號只需要前面那段變數名 後面路徑不需要            
                 cmd.Parameters.AddWithValue("@Description", txt商品描述.Text);
-                cmd.Parameters.AddWithValue("@pboxPictures", str修改後圖檔名稱);
+
+
+                if (is修改圖檔 == true)
+                {
+                    cmd.Parameters.AddWithValue("@pboxPictures", str修改後圖檔名稱);
+                    string 完整圖檔路徑 = GlobalVar.image_dir + @"\" + str修改後圖檔名稱;
+                    pbox商品圖片.Image.Save(完整圖檔路徑);
+                    is修改圖檔 = false;
+                }
+                else 
+                {
+                    cmd.Parameters.AddWithValue("@pboxPictures", image檔名);///沒修改圖片的話 就會拿上面原本呈現的圖片
+                }
 
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
 
 
 
-                if (is修改圖檔 == true)
-                {
-                    string 完整圖檔路徑 = GlobalVar.image_dir + @"\" + str修改後圖檔名稱;
-                    pbox商品圖片.Image.Save(完整圖檔路徑);
-                    is修改圖檔 = false;
-                }
 
                 MessageBox.Show($"資料新增成功, 影響{rows}筆資料");
             }
@@ -257,7 +265,7 @@ namespace WindowsFormsAppProject
                 txt商品價格.Text = reader["Price"].ToString();
                 txt商品描述.Text = reader["Description"].ToString();
 
-                string image檔名 = (string)reader["pictures"];
+                image檔名 = (string)reader["pictures"];
                 string 完整圖檔路徑 = $"{GlobalVar.image_dir}\\{image檔名}";
                 System.IO.FileStream fs = System.IO.File.OpenRead(完整圖檔路徑);//FileStream 建立空間 存取圖檔路徑 
                 //新增會成功 但是沒辦法點選 一定要去SQL把圖檔名稱修正才不會出現DEBUG
@@ -306,6 +314,7 @@ namespace WindowsFormsAppProject
 
         private void btn重新整理_Click(object sender, EventArgs e)
         {
+            清除欄位();
             顯示所有商品();
         }
 
@@ -322,19 +331,24 @@ namespace WindowsFormsAppProject
                 int discount = 0;
                 Int32.TryParse(txt套餐折扣.Text, out discount);
                 cmd.Parameters.AddWithValue("@discount", discount);
-                cmd.Parameters.AddWithValue("@Pictures", str修改後圖檔名稱);
+
+
+                if (is修改圖檔 == true)
+                {
+                    cmd.Parameters.AddWithValue("@Pictures", str修改後圖檔名稱);
+                    string 完整圖檔路徑 = GlobalVar.image_setmeal + @"\" + str修改後圖檔名稱;
+                    pbox套餐圖片.Image.Save(完整圖檔路徑);
+                    is修改圖檔 = false;
+                }
+                else 
+                {
+                    cmd.Parameters.AddWithValue("@Pictures", image套餐檔名);
+                }
 
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
 
 
-
-                if (is修改圖檔 == true)
-                {
-                    string 完整圖檔路徑 = GlobalVar.image_setmeal + @"\" + str修改後圖檔名稱;
-                    pbox套餐圖片.Image.Save(完整圖檔路徑);
-                    is修改圖檔 = false;
-                }
 
                 MessageBox.Show($"資料新增成功, 影響{rows}筆資料");
             }
@@ -452,8 +466,9 @@ namespace WindowsFormsAppProject
                 txt套餐折扣.Text = reader["setDiscount"].ToString();
 
 
-                string image檔名 = (string)reader["pictures"];
-                string 完整圖檔路徑 = $"{GlobalVar.image_setmeal}\\{image檔名}";
+                image套餐檔名 = (string)reader["pictures"];
+
+                string 完整圖檔路徑 = $"{GlobalVar.image_setmeal}\\{image套餐檔名}";
                 System.IO.FileStream fs = System.IO.File.OpenRead(完整圖檔路徑);//FileStream 建立空間 存取圖檔路徑 
                 //新增會成功 但是沒辦法點選 一定要去SQL把圖檔名稱修正才不會出現DEBUG
 
@@ -509,4 +524,4 @@ namespace WindowsFormsAppProject
             顯示所有商品2();
         }
     }
-}//加入員工TABLE  登入系統 ADO5
+}//購物車 訂單紀錄
