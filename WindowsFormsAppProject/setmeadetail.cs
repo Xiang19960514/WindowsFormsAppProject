@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
@@ -15,7 +16,7 @@ namespace WindowsFormsAppProject
 {
     public partial class setmealdetail : Form
     {
-
+        string 名稱;
         public setmealdetail()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace WindowsFormsAppProject
 
         private void setmealdetail_Load(object sender, EventArgs e)
         {
+            
             顯示商品詳細資訊();
            
         }
@@ -68,9 +70,9 @@ namespace WindowsFormsAppProject
                 string strSQL = "select * from";
                 if (GlobalVar.內容各別顯示 == 1)
                 {
-                    strSQL += " setmeal where setID = @SearchId"; 
+                    strSQL += " setmeal where setID = @SearchId";
                 }
-                else  
+                else if (GlobalVar.內容各別顯示 == 0)
                 {
                     strSQL += " products where productID = @SearchId";
                 }
@@ -101,5 +103,94 @@ namespace WindowsFormsAppProject
                 con.Close();
             }
         }
+
+        private void btn加入購物車_Click(object sender, EventArgs e)
+        {
+            名稱 = txt商品名稱.Text;
+            
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();
+
+            if (是否重新購買())
+            {  
+                string strSQL = "insert into ShoppingCart ";
+                if (GlobalVar.內容各別顯示 == 1)
+                {
+                    strSQL += " (setID,Quantity,Price) values (@ID ,@Quantity ,@Price)";
+                }
+                else
+                {
+                    strSQL += " (Productid,Quantity,Price) values (@ID ,@Quantity ,@Price) ";
+                }
+            }
+            Console.WriteLine(0);
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@ID", GlobalVar.商品ID);
+            cmd.Parameters.AddWithValue("@Quantity", txt商品數量.Text);
+            cmd.Parameters.AddWithValue("@Price", txt商品價格.Text);
+            cmd.ExecuteNonQuery();
+
+         
+
+            con.Close();
+                
+            }
+
+        private void btn購物車列表_Click(object sender, EventArgs e)
+        {
+            OrderList 購物車列表 = new OrderList();
+            購物車列表.ShowDialog(); 
+        }
+
+        string 是否重新購買(string 餐點內容)
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
+            con.Open();//打開連接資料庫                                連接都會有and 所以上面性別選擇前面才會多加and
+            string strSQL;
+            if (餐點內容 == "套餐")
+            {
+                strSQL = "select * from shoppingcart where setid = @id";
+                          
+            }
+            else 
+            {
+                strSQL = "select * from shoppingcart where productid = @id";
+            }
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            cmd.Parameters.AddWithValue("@id", 餐點內容);
+            
+            while (reader.Read() == true)
+            {
+                if (餐點內容 == "套餐")
+                {
+                    if (名稱 == (string)reader["setID"])
+                    {
+                        return "有重複";
+                    }
+                    else 
+                    {
+                        return "沒有重複";
+                    }
+                }
+
+                else  //單點有沒有重複
+                {
+                    if (名稱 == (string)reader["productID"])
+                    {
+                        return "有重複";
+                    }
+                    else
+                    {
+                        return "沒有重複";
+                    }
+                }
+
+            }
+
+            reader.Close();
+            con.Close();
+            
+        }
     }
-}////////////////
+}///////////////////////////////////////////////////////////////////////

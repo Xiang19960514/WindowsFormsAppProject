@@ -29,12 +29,7 @@ namespace WindowsFormsAppProject
         }
         private void Manage_Load(object sender, EventArgs e)
         {
-            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder(); //設定放連線資料庫的物件
-            scsb.DataSource = @".";
-            scsb.InitialCatalog = "專題";
-            scsb.IntegratedSecurity = true;
-            scsb.Encrypt = false;
-            GlobalVar.strDBConnectionString = scsb.ConnectionString;//連線資料庫
+           
             cbox類別.Items.Add("套餐");
             cbox類別.Items.Add("主餐");
             cbox類別.Items.Add("配餐");
@@ -524,4 +519,4 @@ namespace WindowsFormsAppProject
             顯示所有商品2();
         }
     }
-}//購物車 訂單紀錄
+}

@@ -35,8 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn購物車列表 = new System.Windows.Forms.Button();
+            this.btn加入購物車 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt商品數量 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -113,29 +113,31 @@
             this.label7.Size = new System.Drawing.Size(0, 30);
             this.label7.TabIndex = 18;
             // 
-            // button2
+            // btn購物車列表
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkOrange;
-            this.button2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(428, 315);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 70);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "我的購物車";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn購物車列表.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn購物車列表.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn購物車列表.Location = new System.Drawing.Point(428, 315);
+            this.btn購物車列表.Margin = new System.Windows.Forms.Padding(4);
+            this.btn購物車列表.Name = "btn購物車列表";
+            this.btn購物車列表.Size = new System.Drawing.Size(168, 70);
+            this.btn購物車列表.TabIndex = 21;
+            this.btn購物車列表.Text = "購物車列表";
+            this.btn購物車列表.UseVisualStyleBackColor = false;
+            this.btn購物車列表.Click += new System.EventHandler(this.btn購物車列表_Click);
             // 
-            // button1
+            // btn加入購物車
             // 
-            this.button1.BackColor = System.Drawing.Color.LightCoral;
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(428, 222);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 70);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "加入購物車";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn加入購物車.BackColor = System.Drawing.Color.LightCoral;
+            this.btn加入購物車.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn加入購物車.Location = new System.Drawing.Point(428, 222);
+            this.btn加入購物車.Margin = new System.Windows.Forms.Padding(4);
+            this.btn加入購物車.Name = "btn加入購物車";
+            this.btn加入購物車.Size = new System.Drawing.Size(168, 70);
+            this.btn加入購物車.TabIndex = 22;
+            this.btn加入購物車.Text = "加入購物車";
+            this.btn加入購物車.UseVisualStyleBackColor = false;
+            this.btn加入購物車.Click += new System.EventHandler(this.btn加入購物車_Click);
             // 
             // label1
             // 
@@ -165,8 +167,8 @@
             this.ClientSize = new System.Drawing.Size(607, 429);
             this.Controls.Add(this.txt商品數量);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn加入購物車);
+            this.Controls.Add(this.btn購物車列表);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt商品描述);
             this.Controls.Add(this.txt商品價格);
@@ -191,8 +193,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn購物車列表;
+        private System.Windows.Forms.Button btn加入購物車;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt商品數量;
     }
