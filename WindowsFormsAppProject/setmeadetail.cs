@@ -16,6 +16,7 @@ namespace WindowsFormsAppProject
 {
     public partial class setmealdetail : Form
     {
+        int 取出後現有數量;
         string 名稱;
         public setmealdetail()
         {
@@ -106,34 +107,49 @@ namespace WindowsFormsAppProject
 
         private void btn加入購物車_Click(object sender, EventArgs e)
         {
-            名稱 = txt商品名稱.Text;
             
+            string strSQL = "";
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
-
-            if (是否重新購買())
+            
+            if (GlobalVar.內容各別顯示 == 1) //1等於套餐
             {  
-                string strSQL = "insert into ShoppingCart ";
-                if (GlobalVar.內容各別顯示 == 1)
+                if (是否重新購買("套餐") == "有重複") //這裡就可以用底下帶入的參數判斷是不是套餐 有沒有重複
+                {   
+                    strSQL = "update ShoppingCart set Quantity =@Quantity  where setid = @ID ";
+                    取出後現有數量 += Convert.ToInt32(txt商品數量.Text);//txt商品數量.Text不能作為方法 所以不能給小括號
+                }
+                else 
                 {
-                    strSQL += " (setID,Quantity,Price) values (@ID ,@Quantity ,@Price)";
+                    strSQL = "insert into ShoppingCart (setID,Quantity,Price) values (@ID,@Quantity,@Price)";
+                    取出後現有數量 = Convert.ToInt32(txt商品數量.Text);
+                }
+                
+            }
+            else
+            {
+                if (是否重新購買("單點") == "有重複") //這裡就可以用底下帶入的參數判斷是不是套餐 有沒有重複
+                {  //update 只需輸入會更動的欄位 單價不用 因為會另外去計算總價
+                    strSQL = "update ShoppingCart set Quantity =@Quantity  where productid = @ID ";
+                    取出後現有數量 += Convert.ToInt32(txt商品數量.Text);//txt商品數量.Text不能作為方法 所以不能給小括號
                 }
                 else
-                {
-                    strSQL += " (Productid,Quantity,Price) values (@ID ,@Quantity ,@Price) ";
+                {  //insert的話全部欄位都要輸入
+                    strSQL = "insert into ShoppingCart (productID,Quantity,Price) values (@ID,@Quantity,@Price)";
+                    取出後現有數量 = Convert.ToInt32(txt商品數量.Text);
                 }
             }
-            Console.WriteLine(0);
+
             SqlCommand cmd = new SqlCommand(strSQL, con);
             cmd.Parameters.AddWithValue("@ID", GlobalVar.商品ID);
-            cmd.Parameters.AddWithValue("@Quantity", txt商品數量.Text);
+            cmd.Parameters.AddWithValue("@Quantity", 取出後現有數量);
             cmd.Parameters.AddWithValue("@Price", txt商品價格.Text);
             cmd.ExecuteNonQuery();
 
-         
 
+            MessageBox.Show("已加入購物車");
             con.Close();
-                
+            Close(); 
             }
 
         private void btn購物車列表_Click(object sender, EventArgs e)
@@ -147,7 +163,7 @@ namespace WindowsFormsAppProject
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();//打開連接資料庫                                連接都會有and 所以上面性別選擇前面才會多加and
             string strSQL;
-            if (餐點內容 == "套餐")
+            if (餐點內容 == "套餐")//把方法的值帶進來 讓他判斷是不是套餐
             {
                 strSQL = "select * from shoppingcart where setid = @id";
                           
@@ -156,41 +172,39 @@ namespace WindowsFormsAppProject
             {
                 strSQL = "select * from shoppingcart where productid = @id";
             }
+
             SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@id", GlobalVar.商品ID);//把ID帶進來 原始設定在listview點擊事件那邊
             SqlDataReader reader = cmd.ExecuteReader();
-            cmd.Parameters.AddWithValue("@id", 餐點內容);
+            
             
             while (reader.Read() == true)
             {
                 if (餐點內容 == "套餐")
                 {
-                    if (名稱 == (string)reader["setID"])
+                    if (GlobalVar.商品ID == (int)reader["setid"])
                     {
+                        取出後現有數量 = (int)reader["Quantity"];
                         return "有重複";
                     }
-                    else 
-                    {
-                        return "沒有重複";
-                    }
+                   
                 }
 
                 else  //單點有沒有重複
                 {
-                    if (名稱 == (string)reader["productID"])
+                    if (GlobalVar.商品ID == (int)reader["productid"])
                     {
+                        取出後現有數量 = (int)reader["Quantity"];//取出數量
                         return "有重複";
                     }
-                    else
-                    {
-                        return "沒有重複";
-                    }
+                    
                 }
 
             }
 
             reader.Close();
             con.Close();
-            
+            return "沒有重複";
         }
     }
 }///////////////////////////////////////////////////////////////////////

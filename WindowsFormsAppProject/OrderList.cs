@@ -29,55 +29,48 @@ namespace WindowsFormsAppProject
 
         private void OrderList_Load(object sender, EventArgs e)
         {
-            顯示listView列表模式();
+            
             購物車資料讀取();
         }
-        void 顯示listView列表模式()
-        {
-            listView商品展示.Clear();
-            listView商品展示.LargeImageList = null;
-            listView商品展示.SmallImageList = null;
-            listView商品展示.View = View.Details;
-          
-            listView商品展示.Columns.Add("單點ID", 200);
-            listView商品展示.Columns.Add("單點名稱", 200); 
-            listView商品展示.Columns.Add("套餐ID", 100);
-            listView商品展示.Columns.Add("套餐名稱");
-            listView商品展示.Columns.Add("商品數量", 100);
-            listView商品展示.Columns.Add("商品價格", 100);
-            listView商品展示.GridLines = true;
-            listView商品展示.FullRowSelect = true;
-
-            for (int i = 0; i < 單點名稱.Count; i += 1)
-            {
-                ListViewItem item = new ListViewItem();
-                item.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
-                item.Text = 單點名稱[i].ToString();
-                item.SubItems.Add(單點ID[i].ToString());
-                item.SubItems.Add(價格[i].ToString());
-               // item.ForeColor = Color.DarkBlue;
-                //item.Tag = listID[i];
-
-                listView商品展示.Items.Add(item);
-            }
-
-        }
+             
         void 購物車資料讀取() 
         {
-            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
-            con.Open();
-            string strSql = "select p.ProductID as 產品編號,productname as 產品名稱,p.Price as 價格 from products p join shoppingcart s on　p.productid = s.productid union all select s.setID,setname,setdiscount from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
-            SqlCommand cmd = new SqlCommand(strSql, con);
-            SqlDataReader reader = cmd.ExecuteReader();
+             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+             con.Open();
+             string strSql = "select p.ProductID,productname,p.Price,s.Quantity from products p join shoppingcart s on　p.productid = s.productid union all select s.setID,setname,setdiscount,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
+             SqlCommand cmd = new SqlCommand(strSql, con);
+             SqlDataReader reader = cmd.ExecuteReader();
+             listView商品展示.Clear();
+             listView商品展示.LargeImageList = null;
+             listView商品展示.SmallImageList = null;
+             listView商品展示.View = View.Details;
+
+             listView商品展示.Columns.Add("所有ID", 200);
+             listView商品展示.Columns.Add("所有商品名稱", 200);
+             listView商品展示.Columns.Add("價格", 100);
+             listView商品展示.Columns.Add("數量", 50);
+
+             listView商品展示.GridLines = true;
+             listView商品展示.FullRowSelect = true;//藍色框框
 
             while (reader.Read())
             {
-                單點名稱.Add((string)reader["產品名稱"]);
-                單點ID.Add((int)reader["產品編號"]);
-                //套餐名稱.Add((string)reader["setName"]);
-                //套餐ID.Add((int)reader["setID"]);
-                價格.Add((int)reader["價格"]);
-                //數量.Add((int)reader["Quantity"]);
+                
+
+               
+              ListViewItem item = new ListViewItem();
+              item.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+              item.Text = reader["Productid"].ToString();//只有第一個是text 其他都是subitems
+              item.SubItems.Add((string)reader["productname"]);
+              item.SubItems.Add(reader["Price"].ToString()); //存字串
+              item.SubItems.Add(reader["Quantity"].ToString());
+                    // item.ForeColor = Color.DarkBlue;
+                    //item.Tag = listID[i];
+
+                    //把上面的值 帶入 listview商品展示.itens.Add  放到列表去
+                    listView商品展示.Items.Add(item);
+                
+                
 
             }
             reader.Close();
