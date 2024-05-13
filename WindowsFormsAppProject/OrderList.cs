@@ -70,11 +70,30 @@ namespace WindowsFormsAppProject
                     //把上面的值 帶入 listview商品展示.itens.Add  放到列表去
                     listView商品展示.Items.Add(item);
                 
-                
-
             }
             reader.Close();
             con.Close();
+        }
+
+        private void btn結帳_Click(object sender, EventArgs e)
+        {
+            if (listView商品展示.Items.Count > 0)
+            {
+                DialogResult dr = MessageBox.Show("是否輸入會員電話","輸入會員", MessageBoxButtons.YesNo);//前面是內容後面是標題
+                switch (dr) 
+                {
+                 case DialogResult.Yes:
+                        Memberlogin memberlogin = new Memberlogin();
+                        memberlogin.ShowDialog();
+                        break;
+                        case DialogResult.No:
+                        break;
+                }
+            }
+            else 
+            {
+                MessageBox.Show("不買拉倒 滾");
+            }
         }
     }
 }
