@@ -18,6 +18,7 @@ namespace WindowsFormsAppProject
     {
         int 取出後現有數量;
         string 名稱;
+        
         public setmealdetail()
         {
             InitializeComponent();
@@ -51,7 +52,7 @@ namespace WindowsFormsAppProject
                 //套餐價格.Sum(); //218 (只有取第一個套餐但他不只一個品項 所以是228-10=218)
                
             }
-            int i = 套餐價格.Sum() - discount;
+            int i = 套餐價格.Sum() + discount;
             //Console.WriteLine(i);測試用
 
             reader.Close();
@@ -118,13 +119,14 @@ namespace WindowsFormsAppProject
                 {   
                     strSQL = "update ShoppingCart set Quantity =@Quantity  where setid = @ID ";
                     取出後現有數量 += Convert.ToInt32(txt商品數量.Text);//txt商品數量.Text不能作為方法 所以不能給小括號
+
                 }
                 else 
                 {
                     strSQL = "insert into ShoppingCart (setID,Quantity,Price) values (@ID,@Quantity,@Price)";
                     取出後現有數量 = Convert.ToInt32(txt商品數量.Text);
                 }
-                
+               
             }
             else
             {
@@ -138,6 +140,7 @@ namespace WindowsFormsAppProject
                     strSQL = "insert into ShoppingCart (productID,Quantity,Price) values (@ID,@Quantity,@Price)";
                     取出後現有數量 = Convert.ToInt32(txt商品數量.Text);
                 }
+                
             }
 
             SqlCommand cmd = new SqlCommand(strSQL, con);
@@ -145,6 +148,7 @@ namespace WindowsFormsAppProject
             cmd.Parameters.AddWithValue("@Quantity", 取出後現有數量);
             cmd.Parameters.AddWithValue("@Price", txt商品價格.Text);
             cmd.ExecuteNonQuery();
+
 
 
             MessageBox.Show("已加入購物車");

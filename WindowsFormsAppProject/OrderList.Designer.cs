@@ -100,7 +100,7 @@
             // 
             // lbl訂單總價
             // 
-            this.lbl訂單總價.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl訂單總價.BackColor = System.Drawing.Color.Cornsilk;
             this.lbl訂單總價.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbl訂單總價.Location = new System.Drawing.Point(217, 525);
             this.lbl訂單總價.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -137,7 +137,8 @@
             // listView商品展示
             // 
             this.listView商品展示.BackColor = System.Drawing.Color.Teal;
-            this.listView商品展示.ForeColor = System.Drawing.Color.Black;
+            this.listView商品展示.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.listView商品展示.ForeColor = System.Drawing.Color.Transparent;
             this.listView商品展示.HideSelection = false;
             this.listView商品展示.Location = new System.Drawing.Point(45, 75);
             this.listView商品展示.Name = "listView商品展示";
