@@ -34,17 +34,18 @@
             this.txt號碼 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn註冊會員 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn確認
             // 
-            this.btn確認.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn確認.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn確認.ForeColor = System.Drawing.Color.Gray;
-            this.btn確認.Location = new System.Drawing.Point(54, 103);
+            this.btn確認.Location = new System.Drawing.Point(134, 106);
             this.btn確認.Name = "btn確認";
-            this.btn確認.Size = new System.Drawing.Size(135, 53);
+            this.btn確認.Size = new System.Drawing.Size(97, 50);
             this.btn確認.TabIndex = 0;
             this.btn確認.Text = "確認";
             this.btn確認.UseVisualStyleBackColor = true;
@@ -73,6 +74,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.CadetBlue;
+            this.groupBox1.Controls.Add(this.btn註冊會員);
             this.groupBox1.Controls.Add(this.txt號碼);
             this.groupBox1.Controls.Add(this.btn確認);
             this.groupBox1.Controls.Add(this.label1);
@@ -93,6 +95,18 @@
             this.pictureBox1.Size = new System.Drawing.Size(384, 317);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            // 
+            // btn註冊會員
+            // 
+            this.btn註冊會員.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn註冊會員.ForeColor = System.Drawing.Color.Gray;
+            this.btn註冊會員.Location = new System.Drawing.Point(6, 106);
+            this.btn註冊會員.Name = "btn註冊會員";
+            this.btn註冊會員.Size = new System.Drawing.Size(122, 50);
+            this.btn註冊會員.TabIndex = 3;
+            this.btn註冊會員.Text = "註冊會員";
+            this.btn註冊會員.UseVisualStyleBackColor = true;
+            this.btn註冊會員.Click += new System.EventHandler(this.btn註冊會員_Click);
             // 
             // Memberlogin
             // 
@@ -119,5 +133,6 @@
         private System.Windows.Forms.TextBox txt號碼;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn註冊會員;
     }
 }

@@ -84,6 +84,7 @@
             this.btn清除所有品項.Text = "清除所有品項";
             this.btn清除所有品項.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn清除所有品項.UseVisualStyleBackColor = false;
+            this.btn清除所有品項.Click += new System.EventHandler(this.btn清除所有品項_Click);
             // 
             // btn移除所選品項
             // 
@@ -140,7 +141,7 @@
             this.listView商品展示.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listView商品展示.ForeColor = System.Drawing.Color.Transparent;
             this.listView商品展示.HideSelection = false;
-            this.listView商品展示.Location = new System.Drawing.Point(45, 75);
+            this.listView商品展示.Location = new System.Drawing.Point(45, 72);
             this.listView商品展示.Name = "listView商品展示";
             this.listView商品展示.Size = new System.Drawing.Size(685, 317);
             this.listView商品展示.TabIndex = 20;

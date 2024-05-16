@@ -55,6 +55,7 @@
             this.lbl商品編號 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn重新整理2 = new System.Windows.Forms.Button();
             this.txt套餐折扣 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt套餐名稱 = new System.Windows.Forms.TextBox();
@@ -68,34 +69,6 @@
             this.txt套餐編號 = new System.Windows.Forms.TextBox();
             this.pbox套餐圖片 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btn重新整理2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dtp生日 = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dtp註冊日期 = new System.Windows.Forms.DateTimePicker();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv資料表)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox商品圖片)).BeginInit();
@@ -103,8 +76,6 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv套餐內容)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox套餐圖片)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -389,7 +360,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("新細明體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabControl1.Location = new System.Drawing.Point(3, 2);
             this.tabControl1.Name = "tabControl1";
@@ -419,6 +389,18 @@
             this.tabPage2.Size = new System.Drawing.Size(1155, 433);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "套餐管理";
+            // 
+            // btn重新整理2
+            // 
+            this.btn重新整理2.BackColor = System.Drawing.Color.Silver;
+            this.btn重新整理2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn重新整理2.Location = new System.Drawing.Point(0, 330);
+            this.btn重新整理2.Name = "btn重新整理2";
+            this.btn重新整理2.Size = new System.Drawing.Size(152, 99);
+            this.btn重新整理2.TabIndex = 107;
+            this.btn重新整理2.Text = "重新整理";
+            this.btn重新整理2.UseVisualStyleBackColor = false;
+            this.btn重新整理2.Click += new System.EventHandler(this.btn重新整理2_Click);
             // 
             // txt套餐折扣
             // 
@@ -553,308 +535,11 @@
             this.label2.TabIndex = 76;
             this.label2.Text = "套餐編號";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.dtp註冊日期);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.dtp生日);
-            this.tabPage3.Controls.Add(this.textBox1);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.dataGridView1);
-            this.tabPage3.Controls.Add(this.comboBox1);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.button4);
-            this.tabPage3.Controls.Add(this.comboBox2);
-            this.tabPage3.Controls.Add(this.textBox3);
-            this.tabPage3.Controls.Add(this.textBox4);
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.button7);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Location = new System.Drawing.Point(4, 37);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1155, 433);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "系統管理";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // btn重新整理2
-            // 
-            this.btn重新整理2.BackColor = System.Drawing.Color.Silver;
-            this.btn重新整理2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn重新整理2.Location = new System.Drawing.Point(0, 330);
-            this.btn重新整理2.Name = "btn重新整理2";
-            this.btn重新整理2.Size = new System.Drawing.Size(152, 99);
-            this.btn重新整理2.TabIndex = 107;
-            this.btn重新整理2.Text = "重新整理";
-            this.btn重新整理2.UseVisualStyleBackColor = false;
-            this.btn重新整理2.Click += new System.EventHandler(this.btn重新整理2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(592, 372);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 51);
-            this.button1.TabIndex = 122;
-            this.button1.Text = "重新整理";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightCoral;
-            this.button2.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(441, 372);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 54);
-            this.button2.TabIndex = 121;
-            this.button2.Text = "商品下架";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(773, 7);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(380, 416);
-            this.dataGridView1.TabIndex = 100;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(62, 239);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 30);
-            this.label4.TabIndex = 118;
-            this.label4.Text = "點數";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(141, 196);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 31);
-            this.textBox2.TabIndex = 117;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(62, 196);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 30);
-            this.label8.TabIndex = 116;
-            this.label8.Text = "地址";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(62, 149);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 30);
-            this.label9.TabIndex = 115;
-            this.label9.Text = "電話";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(585, 297);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(106, 65);
-            this.button4.TabIndex = 113;
-            this.button4.Text = "搜尋";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(441, 297);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 31);
-            this.comboBox2.TabIndex = 112;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(441, 337);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(138, 31);
-            this.textBox3.TabIndex = 111;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox4.Location = new System.Drawing.Point(141, 59);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(167, 31);
-            this.textBox4.TabIndex = 110;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox5.Location = new System.Drawing.Point(141, 15);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(167, 31);
-            this.textBox5.TabIndex = 109;
-            this.textBox5.TabStop = false;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox6.Location = new System.Drawing.Point(141, 149);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(167, 31);
-            this.textBox6.TabIndex = 108;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button5.Location = new System.Drawing.Point(281, 372);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(154, 54);
-            this.button5.TabIndex = 106;
-            this.button5.Text = "欄位清除";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button6.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button6.Location = new System.Drawing.Point(141, 372);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 54);
-            this.button6.TabIndex = 105;
-            this.button6.Text = "商品修改";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button7.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button7.Location = new System.Drawing.Point(1, 372);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(134, 54);
-            this.button7.TabIndex = 104;
-            this.button7.Text = "商品上架";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label10.Location = new System.Drawing.Point(2, 210);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 30);
-            this.label10.TabIndex = 103;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(2, 59);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 30);
-            this.label12.TabIndex = 101;
-            this.label12.Text = "會員名稱";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(2, 15);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(133, 30);
-            this.label13.TabIndex = 99;
-            this.label13.Text = "會員編號";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 106);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(167, 33);
-            this.comboBox1.TabIndex = 120;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(62, 105);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 30);
-            this.label11.TabIndex = 102;
-            this.label11.Text = "性別";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(141, 239);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 31);
-            this.textBox1.TabIndex = 123;
-            // 
-            // dtp生日
-            // 
-            this.dtp生日.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtp生日.Location = new System.Drawing.Point(140, 284);
-            this.dtp生日.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp生日.Name = "dtp生日";
-            this.dtp生日.Size = new System.Drawing.Size(263, 38);
-            this.dtp生日.TabIndex = 128;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(62, 284);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 30);
-            this.label14.TabIndex = 129;
-            this.label14.Text = "生日";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(2, 332);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(133, 30);
-            this.label15.TabIndex = 130;
-            this.label15.Text = "註冊日期";
-            // 
-            // dtp註冊日期
-            // 
-            this.dtp註冊日期.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtp註冊日期.Location = new System.Drawing.Point(140, 329);
-            this.dtp註冊日期.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp註冊日期.Name = "dtp註冊日期";
-            this.dtp註冊日期.Size = new System.Drawing.Size(263, 38);
-            this.dtp註冊日期.TabIndex = 131;
-            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 480);
+            this.ClientSize = new System.Drawing.Size(1170, 475);
             this.Controls.Add(this.tabControl1);
             this.Name = "Manage";
             this.Text = "Manage";
@@ -868,9 +553,6 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv套餐內容)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox套餐圖片)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -897,7 +579,6 @@
         private System.Windows.Forms.Label lbl商品名稱;
         private System.Windows.Forms.DataGridView dgv資料表;
         private System.Windows.Forms.Label lbl商品編號;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox txt商品價格;
         private System.Windows.Forms.TextBox txt商品描述;
         private System.Windows.Forms.Label label7;
@@ -919,31 +600,5 @@
         private System.Windows.Forms.Button btn套餐上架;
         private System.Windows.Forms.Button btn重新整理;
         private System.Windows.Forms.Button btn重新整理2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dtp生日;
-        private System.Windows.Forms.DateTimePicker dtp註冊日期;
-        private System.Windows.Forms.Label label15;
     }
 }

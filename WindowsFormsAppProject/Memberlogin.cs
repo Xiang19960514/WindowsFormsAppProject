@@ -15,6 +15,9 @@ namespace WindowsFormsAppProject
     {     
         int number = 0;
         int ID = 0;
+        int orderid = 0;
+        List<string> ProductName = new List<string>();
+        List<int> Quantity = new List<int>();
         public Memberlogin()
         {
             InitializeComponent();
@@ -70,25 +73,117 @@ namespace WindowsFormsAppProject
         {
             查詢ID();
 
-            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
-            con.Open();//打開連接資料庫
+          
 
             if (ID > 0)
-            {                
-                string strSQL = "insert into Orders(MemberID) Values (@MemberID)";
-                SqlCommand cmd = new SqlCommand(strSQL, con);
-                cmd.Parameters.AddWithValue("MemberID", ID);
-                cmd.ExecuteNonQuery();
+            {              
+                產生訂單();
+                查詢購物車();
+                產生訂單明細();
                 MessageBox.Show("登入成功");
+                
+                
                 OrderList orderList = new OrderList();
                 orderList.輸出訂購單();
-                GlobalVar.訂單清除();
+                清除購物車資料();
                 Close();
             }
             else
             {
                 MessageBox.Show("查無此人");
             }
+            //con.Close();
+        }
+
+        private void btn註冊會員_Click(object sender, EventArgs e)
+        {
+            RegisterMember memberlogin = new RegisterMember();
+            memberlogin.ShowDialog();
+
+        }
+
+        void 產生訂單() 
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
+
+            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+            string strSQL = "insert into orders(MemberID) values(@MemberID); declare @ID int set @ID = scope_identity() select @ID as 產生當下訂單編號";
+           
+            
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@MemberID", ID);
+           
+
+            SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
+                                                        //cmd = 所有資料的欄位表格 然後轉給reader
+
+            if (reader.Read() == true) //去讀整張select表 有讀到東西就是true 讀不到東西就是false
+            {
+                orderid =(int)reader["產生當下訂單編號"];
+            }
+
+            reader.Close();
+            con.Close();
+        }
+
+        void 查詢購物車() 
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
+
+            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+            string strSQL = "select p.ProductID as 產品編號,productname as 產品名稱,p.Price as 價格,s.Quantity as 數量 from products p join shoppingcart s on　p.productid = s.productid union all select s.setID,setname,setdiscount,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
+
+
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+           
+
+
+            SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
+                                                        //cmd = 所有資料的欄位表格 然後轉給reader
+
+            while (reader.Read() == true) //去讀整張select表 有讀到東西就是true 讀不到東西就是false
+            {
+                 ProductName.Add((string)reader["產品名稱"]);
+                 Quantity.Add((int)reader["數量"]);
+
+            }
+
+            reader.Close();
+            con.Close();
+        }
+
+        void 產生訂單明細() 
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
+
+            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+            string strSQL = "insert into OrderDetails values (@OrderID,@Productname,@Quantity)";
+
+
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            for (int i =0; i< ProductName.Count; i++) 
+            {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@OrderID", orderid);
+                cmd.Parameters.AddWithValue("@Productname", ProductName[i]);
+                cmd.Parameters.AddWithValue("@Quantity", Quantity[i]);
+                cmd.ExecuteNonQuery();//只執行不查詢
+            }
+
+            con.Close();
+        }
+        void 清除購物車資料() 
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
+
+            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+            string strSQL = "truncate table shoppingcart";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.ExecuteNonQuery();
             con.Close();
         }
     }

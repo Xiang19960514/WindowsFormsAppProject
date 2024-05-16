@@ -136,12 +136,18 @@ namespace WindowsFormsAppProject
             }
             else 
             {
-                MessageBox.Show("不買拉倒 滾");
+                MessageBox.Show("謝謝惠顧");
             }
                        
         }
 
-
+        private void btn清除所有品項_Click(object sender, EventArgs e)
+        {
+            //listview商品展示.Items.Clear();
+            //GlobalVar.list訂購品項集合.Clear();
+           
+        }
     }
 }
 
+////
