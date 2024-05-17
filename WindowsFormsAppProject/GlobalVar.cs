@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace WindowsFormsAppProject
@@ -16,9 +17,12 @@ namespace WindowsFormsAppProject
         public static int 商品ID;
         public static int 內容各別顯示;
         public static string strDBConnectionString = "";//連線字串 其他的放FORM就好
-        // public static List<ArrayList> list訂購品項集合 = new List<ArrayList>();
-        // public static string 訂購人資訊 = "";
-
+        public static List<int> 產品編號 = new List<int>();
+        public static List<string> 名稱 = new List<string>();
+        public static int ID = 0;
+        public static List<int> 價格 = new List<int>();
+        public static List<int> 數量 = new List<int>();
+        public static bool is查看歷史訂單 = true;//true=查看歷史訂單 false=結帳
         public static void 訂單清除() 
         {
             SqlConnection con = new SqlConnection(strDBConnectionString);

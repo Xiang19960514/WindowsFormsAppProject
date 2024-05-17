@@ -16,14 +16,14 @@ namespace WindowsFormsAppProject
     public partial class OrderList : Form
     {
         List<string> 單點名稱 = new List<string>();
-        List<int> 單點ID = new List<int>();
-        List<string> 輸出訂單 = new List<string>();        
+        List<int> ID = new List<int>();
+        List<string> 輸出訂單 = new List<string>();
         List<int> 套餐ID = new List<int>();
-        List<int> 價格 = new List<int>();
+        public List<int> 價格 = new List<int>();
         List<int> 數量 = new List<int>();
-       
 
-        
+
+
         public OrderList()
         {
             InitializeComponent();
@@ -31,60 +31,71 @@ namespace WindowsFormsAppProject
 
         private void OrderList_Load(object sender, EventArgs e)
         {
-            
+
             購物車資料讀取();
         }
-             
-        void 購物車資料讀取() 
-        {
-             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
-             con.Open();
-             string strSql = "select p.ProductID,productname,p.Price,s.Quantity from products p join shoppingcart s on p.productid = s.productid union all select s.setID,setname,shoppingcart.price,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
-             SqlCommand cmd = new SqlCommand(strSql, con);
-             SqlDataReader reader = cmd.ExecuteReader();
-             listView商品展示.Clear();
-             listView商品展示.LargeImageList = null;
-             listView商品展示.SmallImageList = null;
-             listView商品展示.View = View.Details;
 
-             listView商品展示.Columns.Add("所有ID", 80);
-             listView商品展示.Columns.Add("所有商品名稱", 150);
-             listView商品展示.Columns.Add("價格", 80);
-             listView商品展示.Columns.Add("數量", 50);
-             
-             listView商品展示.GridLines = true;
-             listView商品展示.FullRowSelect = true;//藍色框框
+        void 購物車資料讀取()
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();
+            string strSql = "select p.ProductID,productname,p.Price,s.Quantity from products p join shoppingcart s on p.productid = s.productid union all select s.setID,setname,shoppingcart.price,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
+            SqlCommand cmd = new SqlCommand(strSql, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            listView商品展示.Clear();
+            listView商品展示.LargeImageList = null;
+            listView商品展示.SmallImageList = null;
+            listView商品展示.View = View.Details;
+
+            listView商品展示.Columns.Add("所有ID", 80);
+            listView商品展示.Columns.Add("所有商品名稱", 150);
+            listView商品展示.Columns.Add("價格", 80);
+            listView商品展示.Columns.Add("數量", 50);
+
+            listView商品展示.GridLines = true;
+            listView商品展示.FullRowSelect = true;//藍色框框
 
             while (reader.Read())
-            {              
-              ListViewItem item = new ListViewItem();
-              //item.Font = new Font("微軟正黑體", 18, FontStyle.Bold);// 字形物件要NEW
-              //item.ForeColor = Color.White; //全域變數的概念
-              item.Text = reader["Productid"].ToString();//只有第一個是text 其他都是subitems
-              item.SubItems.Add((string)reader["productname"]);
-              單點名稱.Add((string)reader["productname"]);
-             
-              item.SubItems.Add(reader["Price"].ToString()); //存字串
-              價格.Add(Convert.ToInt32(reader["Price"]));
-              item.SubItems.Add(reader["Quantity"].ToString());
-              數量.Add((int)reader["Quantity"]);
-                // item.ForeColor = Color.DarkBlue;
-                //item.Tag = listID[i];
+            {
+                ListViewItem item = new ListViewItem();
+                //item.Font = new Font("微軟正黑體", 18, FontStyle.Bold);// 字形物件要NEW
+                //item.ForeColor = Color.White; //全域變數的概念
+
+                int intId = (int)reader["Productid"];
+                item.Text = intId.ToString();//只有第一個是text 其他都是subitems
+                ID.Add(intId);
+                GlobalVar.產品編號.Add(intId);
+
+                string productname = (string)reader["productname"];
+                item.SubItems.Add(productname);
+                GlobalVar.名稱.Add(productname);
+                單點名稱.Add(productname);
+
+                int intPrice = (int)reader["Price"];
+                item.SubItems.Add(intPrice.ToString());////////////不改TOSTRING的話會有紅線 但不知道這樣改對不對
+                價格.Add(intPrice);
+                GlobalVar.價格.Add(intPrice);
+
+                int intQuantity = (int)reader["Quantity"];
+                item.SubItems.Add(intQuantity.ToString());///////////不改TOSTRING的話會有紅線 但不知道這樣改對不對
+                數量.Add(intQuantity);
+                GlobalVar.數量.Add(intQuantity);
+               
 
                 //把上面的值 帶入 listview商品展示.itens.Add  放到列表去
                 listView商品展示.Items.Add(item);
-                
+
             }
             int 總價 = 0;
-            for (int i = 0; i < 價格.Count; i++) 
+            for (int i = 0; i < 價格.Count; i++)
             {
-                總價 += 價格[i]*數量[i]; 
+                總價 += 價格[i] * 數量[i];
             }
             lbl訂單總價.Text = $"總金額{總價}元";
             reader.Close();
             con.Close();
         }
-        public void 輸出訂購單() 
+        public void 輸出訂購單()
         {
             string str預設檔案目錄 = @"C:/";
             Random myRnd = new Random();
@@ -113,16 +124,17 @@ namespace WindowsFormsAppProject
             }
             輸出訂單.Add(strMsg);
             System.IO.File.WriteAllLines(str完整路徑檔名, 輸出訂單, Encoding.UTF8);
-            MessageBox.Show("訂購單儲存成功");           
+            MessageBox.Show("訂購單儲存成功");
         }
         private void btn結帳_Click(object sender, EventArgs e)
         {
             if (listView商品展示.Items.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("是否輸入會員電話","輸入會員", MessageBoxButtons.YesNo);//前面是內容後面是標題
-                switch (dr) 
+                DialogResult dr = MessageBox.Show("是否輸入會員電話", "輸入會員", MessageBoxButtons.YesNo);//前面是內容後面是標題
+                switch (dr)
                 {
                     case DialogResult.Yes://如果有會員的話
+
                         Memberlogin memberlogin = new Memberlogin();
                         memberlogin.ShowDialog();
                         Close();
@@ -134,20 +146,18 @@ namespace WindowsFormsAppProject
                         break;
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("謝謝惠顧");
             }
-                       
+
         }
 
         private void btn清除所有品項_Click(object sender, EventArgs e)
         {
             //listview商品展示.Items.Clear();
             //GlobalVar.list訂購品項集合.Clear();
-           
+
         }
     }
 }
-
-////

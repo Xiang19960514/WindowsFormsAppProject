@@ -273,7 +273,7 @@
             // 
             // pbox商品圖片
             // 
-            this.pbox商品圖片.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pbox商品圖片.BackColor = System.Drawing.Color.White;
             this.pbox商品圖片.Location = new System.Drawing.Point(330, 3);
             this.pbox商品圖片.Name = "pbox商品圖片";
             this.pbox商品圖片.Size = new System.Drawing.Size(430, 284);

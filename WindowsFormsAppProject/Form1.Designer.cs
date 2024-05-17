@@ -38,6 +38,7 @@
             this.image_picture = new System.Windows.Forms.ImageList(this.components);
             this.btn查看購物車 = new System.Windows.Forms.Button();
             this.btn系統管理 = new System.Windows.Forms.Button();
+            this.btn歷史訂單 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView圖片
@@ -46,7 +47,7 @@
             this.listView圖片.Location = new System.Drawing.Point(186, 23);
             this.listView圖片.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView圖片.Name = "listView圖片";
-            this.listView圖片.Size = new System.Drawing.Size(605, 510);
+            this.listView圖片.Size = new System.Drawing.Size(605, 562);
             this.listView圖片.TabIndex = 0;
             this.listView圖片.UseCompatibleStateImageBehavior = false;
             this.listView圖片.ItemActivate += new System.EventHandler(this.listView圖片_ItemActivate);
@@ -148,12 +149,26 @@
             this.btn系統管理.UseVisualStyleBackColor = false;
             this.btn系統管理.Click += new System.EventHandler(this.btn系統管理_Click_1);
             // 
+            // btn歷史訂單
+            // 
+            this.btn歷史訂單.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn歷史訂單.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn歷史訂單.Location = new System.Drawing.Point(9, 532);
+            this.btn歷史訂單.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn歷史訂單.Name = "btn歷史訂單";
+            this.btn歷史訂單.Size = new System.Drawing.Size(173, 51);
+            this.btn歷史訂單.TabIndex = 8;
+            this.btn歷史訂單.Text = "歷史訂單";
+            this.btn歷史訂單.UseVisualStyleBackColor = false;
+            this.btn歷史訂單.Click += new System.EventHandler(this.btn歷史訂單_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(803, 544);
+            this.ClientSize = new System.Drawing.Size(803, 594);
+            this.Controls.Add(this.btn歷史訂單);
             this.Controls.Add(this.btn系統管理);
             this.Controls.Add(this.btn查看購物車);
             this.Controls.Add(this.btn點心);
@@ -181,6 +196,7 @@
         private System.Windows.Forms.ImageList image_picture;
         private System.Windows.Forms.Button btn查看購物車;
         private System.Windows.Forms.Button btn系統管理;
+        private System.Windows.Forms.Button btn歷史訂單;
     }
 }
 

@@ -323,5 +323,11 @@ namespace WindowsFormsAppProject
             讀取產品的內容(strSQL);
             顯示圖片列表();
         }
+
+        private void btn歷史訂單_Click(object sender, EventArgs e)
+        {
+            Revenue revenue = new Revenue();
+            revenue.ShowDialog();
+        }
     }
 }

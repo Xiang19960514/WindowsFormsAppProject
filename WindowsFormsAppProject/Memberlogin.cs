@@ -18,6 +18,8 @@ namespace WindowsFormsAppProject
         int orderid = 0;
         List<string> ProductName = new List<string>();
         List<int> Quantity = new List<int>();
+        List<int> 單價 = new List<int>();
+        
         public Memberlogin()
         {
             InitializeComponent();
@@ -39,7 +41,8 @@ namespace WindowsFormsAppProject
 
             if (reader.Read() == true) //這裡就是讀取 然後打欄位表格的資料 sid sname 等等 型態
             {
-                ID = (int)reader["MemberID"]; //add存值 = 把MEMBERID存到陣列ID裡面去            
+                ID = ((int)reader["MemberID"]); //add存值 = 把MEMBERID存到陣列ID裡面去
+                GlobalVar.ID = ID;
             }
 
 
@@ -73,20 +76,31 @@ namespace WindowsFormsAppProject
         {
             查詢ID();
 
-          
-
+            
             if (ID > 0)
-            {              
-                產生訂單();
-                查詢購物車();
-                產生訂單明細();
-                MessageBox.Show("登入成功");
+            {
+                if (GlobalVar.is查看歷史訂單 == true)
+                {
+                    
+                    Close();
+                    //Revenue revenue = new Revenue();
+                    //revenue.ShowDialog();
+
+                }
+                else
+                {
+                    產生訂單();
+                    查詢購物車();
+                    產生訂單明細();
+                    MessageBox.Show("登入成功");
+
+
+                    OrderList orderList = new OrderList();
+                    orderList.輸出訂購單();
+                    清除購物車資料();
+                    Close();
+                }
                 
-                
-                OrderList orderList = new OrderList();
-                orderList.輸出訂購單();
-                清除購物車資料();
-                Close();
             }
             else
             {
@@ -127,17 +141,22 @@ namespace WindowsFormsAppProject
             con.Close();
         }
 
-        void 查詢購物車() 
+        void 查詢購物車()
         {
+
+            ProductName.Clear();
+            Quantity.Clear();
+            單價.Clear();
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
 
-            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+           
             string strSQL = "select p.ProductID as 產品編號,productname as 產品名稱,p.Price as 價格,s.Quantity as 數量 from products p join shoppingcart s on　p.productid = s.productid union all select s.setID,setname,setdiscount,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
+            //這裡的價格 進 ORDERLIST 價格有問題 哪一個試算完的價格 因為現在進去的是折扣-5 不是真正價格
 
 
             SqlCommand cmd = new SqlCommand(strSQL, con);
-           
+
 
 
             SqlDataReader reader = cmd.ExecuteReader(); // cmd.execute = 執行  丟到reader 之後要用什麼資料就去reader取 再看看要不要轉型
@@ -145,8 +164,9 @@ namespace WindowsFormsAppProject
 
             while (reader.Read() == true) //去讀整張select表 有讀到東西就是true 讀不到東西就是false
             {
-                 ProductName.Add((string)reader["產品名稱"]);
-                 Quantity.Add((int)reader["數量"]);
+                ProductName.Add((string)reader["產品名稱"]);
+                Quantity.Add((int)reader["數量"]);
+                單價.Add((int)reader["價格"]);
 
             }
 
@@ -154,26 +174,38 @@ namespace WindowsFormsAppProject
             con.Close();
         }
 
-        void 產生訂單明細() 
+        void 產生訂單明細()
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
 
             //修改為 不換圖片也不會出BUG 多了一個IF去判斷
-            string strSQL = "insert into OrderDetails values (@OrderID,@Productname,@Quantity)";
+            string strSQL = "insert into OrderDetails values (@OrderID,@productid,@Productname,@price,@Quantity)";
 
 
             SqlCommand cmd = new SqlCommand(strSQL, con);
-            for (int i =0; i< ProductName.Count; i++) 
+            for (int i = 0; i < GlobalVar.產品編號.Count; i++)
             {
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@OrderID", orderid);
-                cmd.Parameters.AddWithValue("@Productname", ProductName[i]);
-                cmd.Parameters.AddWithValue("@Quantity", Quantity[i]);
+                cmd.Parameters.AddWithValue("@productid", GlobalVar.產品編號[i]);
+                cmd.Parameters.AddWithValue("@ProductName", GlobalVar.名稱[i]);
+                cmd.Parameters.AddWithValue("@price", GlobalVar.價格[i]);
+                cmd.Parameters.AddWithValue("@Quantity", GlobalVar.數量[i]);
+                
                 cmd.ExecuteNonQuery();//只執行不查詢
             }
 
+            foreach (int a in GlobalVar.產品編號) 
+            {
+                Console.WriteLine($"ID:{a}");
+            }
+
             con.Close();
+            GlobalVar.產品編號.Clear();
+            GlobalVar.名稱.Clear();
+            GlobalVar.價格.Clear();
+            GlobalVar.數量.Clear();
         }
         void 清除購物車資料() 
         {
@@ -185,6 +217,11 @@ namespace WindowsFormsAppProject
             SqlCommand cmd = new SqlCommand(strSQL, con);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        private void Memberlogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

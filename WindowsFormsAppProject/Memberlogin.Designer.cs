@@ -33,8 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt號碼 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn註冊會員 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -87,15 +87,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "請輸入會員電話";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(384, 317);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // btn註冊會員
             // 
             this.btn註冊會員.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -108,6 +99,15 @@
             this.btn註冊會員.UseVisualStyleBackColor = true;
             this.btn註冊會員.Click += new System.EventHandler(this.btn註冊會員_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-3, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(384, 317);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // Memberlogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -118,6 +118,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Memberlogin";
             this.Text = "Memberlogin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Memberlogin_FormClosing);
             this.Load += new System.EventHandler(this.Memberlogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
