@@ -99,7 +99,7 @@ namespace WindowsFormsAppProject
 
         private void btn商品修改_Click(object sender, EventArgs e)
         {
-            if (txt商品名稱.Text != "" && cbox類別.Text != "" && txt商品價格.Text != "" && txt商品存貨.Text != "" && pbox商品圖片.Image != null) //空字串不等於null 所以要改成null
+            if (txt商品名稱.Text != "" && cbox類別.SelectedItem.ToString() != "" && txt商品價格.Text != "" && txt商品存貨.Text != "" && pbox商品圖片.Image != null) //空字串不等於null 所以要改成null
             {
                 SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
                 con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
@@ -222,7 +222,7 @@ namespace WindowsFormsAppProject
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);//連線資料庫的檔案丟到con
             con.Open();//打開連接資料庫                                連接都會有and 所以上面性別選擇前面才會多加and
-            string strSQL = $"select * from products"; //設變數 帶入sql語法
+            string strSQL = "select * from products"; //設變數 帶入sql語法
             SqlCommand cmd = new SqlCommand(strSQL, con); //設一個變數去接 strSQL=語法,con=資料庫
             //有模糊字串所以有% 所以要用雙引號把兩個都帶進去 這樣就要用                                                                  
 

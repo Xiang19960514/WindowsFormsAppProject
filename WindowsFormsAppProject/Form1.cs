@@ -281,6 +281,8 @@ namespace WindowsFormsAppProject
 
         private void btn查看購物車_Click(object sender, EventArgs e)
         {
+            
+            GlobalVar.is查看歷史訂單 = false;
             OrderList myOrderListForm = new OrderList();           
             myOrderListForm.ShowDialog();//獨佔開啟
         }
@@ -326,6 +328,7 @@ namespace WindowsFormsAppProject
 
         private void btn歷史訂單_Click(object sender, EventArgs e)
         {
+            GlobalVar.is查看歷史訂單 = true;
             Revenue revenue = new Revenue();
             revenue.ShowDialog();
         }

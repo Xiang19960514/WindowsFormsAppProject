@@ -58,8 +58,6 @@ namespace WindowsFormsAppProject
             while (reader.Read())
             {
                 ListViewItem item = new ListViewItem();
-                //item.Font = new Font("微軟正黑體", 18, FontStyle.Bold);// 字形物件要NEW
-                //item.ForeColor = Color.White; //全域變數的概念
 
                 int intId = (int)reader["Productid"];
                 item.Text = intId.ToString();//只有第一個是text 其他都是subitems
@@ -132,32 +130,46 @@ namespace WindowsFormsAppProject
             {
                 DialogResult dr = MessageBox.Show("是否輸入會員電話", "輸入會員", MessageBoxButtons.YesNo);//前面是內容後面是標題
                 switch (dr)
-                {
+                {   // 確定結帳
                     case DialogResult.Yes://如果有會員的話
-
+                       
                         Memberlogin memberlogin = new Memberlogin();
                         memberlogin.ShowDialog();
                         Close();
                         break;
                     case DialogResult.No://如果沒有會員的話執行這邊            
                         輸出訂購單();
+                        MessageBox.Show("謝謝惠顧");
                         GlobalVar.訂單清除();
                         Close();
                         break;
                 }
             }
-            else
+            else 
             {
-                MessageBox.Show("謝謝惠顧");
+                MessageBox.Show("請把商品加入購物車");
             }
 
         }
 
         private void btn清除所有品項_Click(object sender, EventArgs e)
         {
-            //listview商品展示.Items.Clear();
-            //GlobalVar.list訂購品項集合.Clear();
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();//不用寫攔位名稱 也不用寫ID 所以第一個是PNAME以此類推
 
+            //修改為 不換圖片也不會出BUG 多了一個IF去判斷
+            string strSQL = "truncate table shoppingcart";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            int rows = cmd.ExecuteNonQuery();
+            MessageBox.Show("清除資料完成");
+            Close();
+            con.Close();
         }
+
+        private void btn繼續訂購關閉_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }

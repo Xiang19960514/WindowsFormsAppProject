@@ -80,6 +80,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
             this.tabPage1.Controls.Add(this.btn重新整理);
             this.tabPage1.Controls.Add(this.btn商品下架);
             this.tabPage1.Controls.Add(this.dgv資料表);
@@ -111,7 +112,6 @@
             this.tabPage1.Size = new System.Drawing.Size(1155, 433);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "商品管理";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btn重新整理
             // 
@@ -259,6 +259,7 @@
             this.txt商品編號.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt商品編號.Location = new System.Drawing.Point(147, 11);
             this.txt商品編號.Name = "txt商品編號";
+            this.txt商品編號.ReadOnly = true;
             this.txt商品編號.Size = new System.Drawing.Size(167, 31);
             this.txt商品編號.TabIndex = 75;
             this.txt商品編號.TabStop = false;
@@ -274,7 +275,7 @@
             // pbox商品圖片
             // 
             this.pbox商品圖片.BackColor = System.Drawing.Color.White;
-            this.pbox商品圖片.Location = new System.Drawing.Point(330, 3);
+            this.pbox商品圖片.Location = new System.Drawing.Point(335, 6);
             this.pbox商品圖片.Name = "pbox商品圖片";
             this.pbox商品圖片.Size = new System.Drawing.Size(430, 284);
             this.pbox商品圖片.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -511,6 +512,7 @@
             this.txt套餐編號.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt套餐編號.Location = new System.Drawing.Point(142, 13);
             this.txt套餐編號.Name = "txt套餐編號";
+            this.txt套餐編號.ReadOnly = true;
             this.txt套餐編號.Size = new System.Drawing.Size(167, 35);
             this.txt套餐編號.TabIndex = 78;
             this.txt套餐編號.TabStop = false;

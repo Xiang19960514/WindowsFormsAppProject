@@ -34,10 +34,8 @@
             this.btn清除所有品項 = new System.Windows.Forms.Button();
             this.btn移除所選品項 = new System.Windows.Forms.Button();
             this.lbl訂單總價 = new System.Windows.Forms.Label();
-            this.lbl訂購人資料 = new System.Windows.Forms.Label();
             this.lbl訂購品項列表 = new System.Windows.Forms.Label();
             this.listView商品展示 = new System.Windows.Forms.ListView();
-            this.txt訂購人資料 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +53,7 @@
             this.btn繼續訂購關閉.Text = "繼續訂購(關閉)";
             this.btn繼續訂購關閉.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn繼續訂購關閉.UseVisualStyleBackColor = false;
+            this.btn繼續訂購關閉.Click += new System.EventHandler(this.btn繼續訂購關閉_Click);
             // 
             // btn結帳
             // 
@@ -111,49 +110,30 @@
             this.lbl訂單總價.Text = "訂單總價 00000 元";
             this.lbl訂單總價.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl訂購人資料
-            // 
-            this.lbl訂購人資料.AutoSize = true;
-            this.lbl訂購人資料.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.lbl訂購人資料.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl訂購人資料.Location = new System.Drawing.Point(374, 26);
-            this.lbl訂購人資料.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl訂購人資料.Name = "lbl訂購人資料";
-            this.lbl訂購人資料.Size = new System.Drawing.Size(167, 38);
-            this.lbl訂購人資料.TabIndex = 11;
-            this.lbl訂購人資料.Text = "訂購人資料";
-            // 
             // lbl訂購品項列表
             // 
             this.lbl訂購品項列表.AutoSize = true;
             this.lbl訂購品項列表.BackColor = System.Drawing.Color.Sienna;
             this.lbl訂購品項列表.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl訂購品項列表.Location = new System.Drawing.Point(50, 26);
+            this.lbl訂購品項列表.Location = new System.Drawing.Point(297, 22);
             this.lbl訂購品項列表.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl訂購品項列表.Name = "lbl訂購品項列表";
             this.lbl訂購品項列表.Size = new System.Drawing.Size(167, 38);
             this.lbl訂購品項列表.TabIndex = 10;
             this.lbl訂購品項列表.Text = "購物車列表";
+            this.lbl訂購品項列表.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listView商品展示
             // 
-            this.listView商品展示.BackColor = System.Drawing.Color.Teal;
+            this.listView商品展示.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.listView商品展示.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.listView商品展示.ForeColor = System.Drawing.Color.Transparent;
+            this.listView商品展示.ForeColor = System.Drawing.Color.Black;
             this.listView商品展示.HideSelection = false;
             this.listView商品展示.Location = new System.Drawing.Point(45, 72);
             this.listView商品展示.Name = "listView商品展示";
             this.listView商品展示.Size = new System.Drawing.Size(685, 317);
             this.listView商品展示.TabIndex = 20;
             this.listView商品展示.UseCompatibleStateImageBehavior = false;
-            // 
-            // txt訂購人資料
-            // 
-            this.txt訂購人資料.Font = new System.Drawing.Font("新細明體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt訂購人資料.Location = new System.Drawing.Point(548, 26);
-            this.txt訂購人資料.Name = "txt訂購人資料";
-            this.txt訂購人資料.Size = new System.Drawing.Size(182, 40);
-            this.txt訂購人資料.TabIndex = 21;
             // 
             // pictureBox1
             // 
@@ -170,14 +150,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(767, 601);
-            this.Controls.Add(this.txt訂購人資料);
             this.Controls.Add(this.listView商品展示);
             this.Controls.Add(this.btn繼續訂購關閉);
             this.Controls.Add(this.btn結帳);
             this.Controls.Add(this.btn清除所有品項);
             this.Controls.Add(this.btn移除所選品項);
             this.Controls.Add(this.lbl訂單總價);
-            this.Controls.Add(this.lbl訂購人資料);
             this.Controls.Add(this.lbl訂購品項列表);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -197,10 +175,8 @@
         private System.Windows.Forms.Button btn清除所有品項;
         private System.Windows.Forms.Button btn移除所選品項;
         private System.Windows.Forms.Label lbl訂單總價;
-        private System.Windows.Forms.Label lbl訂購人資料;
         private System.Windows.Forms.Label lbl訂購品項列表;
         private System.Windows.Forms.ListView listView商品展示;
-        private System.Windows.Forms.TextBox txt訂購人資料;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

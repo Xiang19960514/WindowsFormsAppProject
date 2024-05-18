@@ -23,6 +23,8 @@ namespace WindowsFormsAppProject
         public static List<int> 價格 = new List<int>();
         public static List<int> 數量 = new List<int>();
         public static bool is查看歷史訂單 = true;//true=查看歷史訂單 false=結帳
+        public static bool is登入成功 = false;
+        public static bool islogin取消 = false;
         public static void 訂單清除() 
         {
             SqlConnection con = new SqlConnection(strDBConnectionString);

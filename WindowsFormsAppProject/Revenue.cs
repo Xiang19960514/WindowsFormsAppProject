@@ -24,6 +24,12 @@ namespace WindowsFormsAppProject
             
             Memberlogin memberlogin = new Memberlogin();
             memberlogin.ShowDialog();
+            if (GlobalVar.islogin取消 == true)
+            {
+                Close();
+                GlobalVar.islogin取消 = false;
+            }
+            GlobalVar.is登入成功 = false;
             購物車資料讀取();
         }
         

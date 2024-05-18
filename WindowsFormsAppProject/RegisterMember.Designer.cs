@@ -39,13 +39,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv會員資料呈現 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn搜尋 = new System.Windows.Forms.Button();
-            this.btn欄位清除 = new System.Windows.Forms.Button();
-            this.btn重新整理 = new System.Windows.Forms.Button();
             this.btn修改會員 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btn重新整理 = new System.Windows.Forms.Button();
+            this.btn搜尋 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv會員資料呈現)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +99,7 @@
             this.txt會員編號.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt會員編號.Location = new System.Drawing.Point(143, 40);
             this.txt會員編號.Name = "txt會員編號";
+            this.txt會員編號.ReadOnly = true;
             this.txt會員編號.Size = new System.Drawing.Size(167, 31);
             this.txt會員編號.TabIndex = 139;
             this.txt會員編號.TabStop = false;
@@ -114,11 +114,11 @@
             // 
             // btn新增會員
             // 
-            this.btn新增會員.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn新增會員.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btn新增會員.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn新增會員.Location = new System.Drawing.Point(6, 275);
             this.btn新增會員.Name = "btn新增會員";
-            this.btn新增會員.Size = new System.Drawing.Size(138, 59);
+            this.btn新增會員.Size = new System.Drawing.Size(178, 59);
             this.btn新增會員.TabIndex = 136;
             this.btn新增會員.Text = "新增會員";
             this.btn新增會員.UseVisualStyleBackColor = false;
@@ -154,22 +154,23 @@
             this.label13.TabIndex = 132;
             this.label13.Text = "會員編號";
             // 
-            // dataGridView1
+            // dgv會員資料呈現
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(395, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(403, 373);
-            this.dataGridView1.TabIndex = 133;
+            this.dgv會員資料呈現.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgv會員資料呈現.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv會員資料呈現.Location = new System.Drawing.Point(395, 22);
+            this.dgv會員資料呈現.Name = "dgv會員資料呈現";
+            this.dgv會員資料呈現.RowHeadersWidth = 51;
+            this.dgv會員資料呈現.RowTemplate.Height = 27;
+            this.dgv會員資料呈現.Size = new System.Drawing.Size(403, 373);
+            this.dgv會員資料呈現.TabIndex = 133;
+            this.dgv會員資料呈現.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv會員資料呈現_CellClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.RosyBrown;
+            this.groupBox1.BackColor = System.Drawing.Color.Peru;
             this.groupBox1.Controls.Add(this.btn修改會員);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgv會員資料呈現);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.dtp生日);
@@ -178,7 +179,6 @@
             this.groupBox1.Controls.Add(this.btn重新整理);
             this.groupBox1.Controls.Add(this.btn新增會員);
             this.groupBox1.Controls.Add(this.cbx性別);
-            this.groupBox1.Controls.Add(this.btn欄位清除);
             this.groupBox1.Controls.Add(this.txt電話);
             this.groupBox1.Controls.Add(this.txt會員編號);
             this.groupBox1.Controls.Add(this.txt會員名稱);
@@ -187,46 +187,10 @@
             this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox1.Location = new System.Drawing.Point(0, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 405);
+            this.groupBox1.Size = new System.Drawing.Size(807, 405);
             this.groupBox1.TabIndex = 155;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "會員註冊";
-            // 
-            // btn搜尋
-            // 
-            this.btn搜尋.BackColor = System.Drawing.Color.OldLace;
-            this.btn搜尋.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn搜尋.Location = new System.Drawing.Point(303, 275);
-            this.btn搜尋.Name = "btn搜尋";
-            this.btn搜尋.Size = new System.Drawing.Size(86, 124);
-            this.btn搜尋.TabIndex = 143;
-            this.btn搜尋.Text = "搜尋";
-            this.btn搜尋.UseVisualStyleBackColor = false;
-            this.btn搜尋.Click += new System.EventHandler(this.btn搜尋_Click);
-            // 
-            // btn欄位清除
-            // 
-            this.btn欄位清除.BackColor = System.Drawing.Color.LightCoral;
-            this.btn欄位清除.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn欄位清除.Location = new System.Drawing.Point(159, 340);
-            this.btn欄位清除.Name = "btn欄位清除";
-            this.btn欄位清除.Size = new System.Drawing.Size(138, 59);
-            this.btn欄位清除.TabIndex = 137;
-            this.btn欄位清除.Text = "欄位清除";
-            this.btn欄位清除.UseVisualStyleBackColor = false;
-            this.btn欄位清除.Click += new System.EventHandler(this.btn欄位清除_Click);
-            // 
-            // btn重新整理
-            // 
-            this.btn重新整理.BackColor = System.Drawing.Color.Silver;
-            this.btn重新整理.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn重新整理.Location = new System.Drawing.Point(159, 275);
-            this.btn重新整理.Name = "btn重新整理";
-            this.btn重新整理.Size = new System.Drawing.Size(138, 59);
-            this.btn重新整理.TabIndex = 149;
-            this.btn重新整理.Text = "重新整理";
-            this.btn重新整理.UseVisualStyleBackColor = false;
-            this.btn重新整理.Click += new System.EventHandler(this.btn重新整理_Click);
             // 
             // btn修改會員
             // 
@@ -234,11 +198,35 @@
             this.btn修改會員.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn修改會員.Location = new System.Drawing.Point(6, 340);
             this.btn修改會員.Name = "btn修改會員";
-            this.btn修改會員.Size = new System.Drawing.Size(138, 59);
+            this.btn修改會員.Size = new System.Drawing.Size(178, 59);
             this.btn修改會員.TabIndex = 155;
             this.btn修改會員.Text = "修改會員";
             this.btn修改會員.UseVisualStyleBackColor = false;
             this.btn修改會員.Click += new System.EventHandler(this.btn修改會員_Click);
+            // 
+            // btn重新整理
+            // 
+            this.btn重新整理.BackColor = System.Drawing.Color.Silver;
+            this.btn重新整理.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn重新整理.Location = new System.Drawing.Point(210, 275);
+            this.btn重新整理.Name = "btn重新整理";
+            this.btn重新整理.Size = new System.Drawing.Size(172, 59);
+            this.btn重新整理.TabIndex = 149;
+            this.btn重新整理.Text = "重新整理";
+            this.btn重新整理.UseVisualStyleBackColor = false;
+            this.btn重新整理.Click += new System.EventHandler(this.btn重新整理_Click);
+            // 
+            // btn搜尋
+            // 
+            this.btn搜尋.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn搜尋.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn搜尋.Location = new System.Drawing.Point(210, 340);
+            this.btn搜尋.Name = "btn搜尋";
+            this.btn搜尋.Size = new System.Drawing.Size(172, 59);
+            this.btn搜尋.TabIndex = 143;
+            this.btn搜尋.Text = "搜尋";
+            this.btn搜尋.UseVisualStyleBackColor = false;
+            this.btn搜尋.Click += new System.EventHandler(this.btn搜尋_Click);
             // 
             // RegisterMember
             // 
@@ -249,7 +237,7 @@
             this.Name = "RegisterMember";
             this.Text = "RegisterMember";
             this.Load += new System.EventHandler(this.RegisterMember_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv會員資料呈現)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -268,11 +256,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv會員資料呈現;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn修改會員;
         private System.Windows.Forms.Button btn重新整理;
-        private System.Windows.Forms.Button btn欄位清除;
         private System.Windows.Forms.Button btn搜尋;
     }
 }

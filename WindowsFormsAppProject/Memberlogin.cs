@@ -19,6 +19,7 @@ namespace WindowsFormsAppProject
         List<string> ProductName = new List<string>();
         List<int> Quantity = new List<int>();
         List<int> 單價 = new List<int>();
+        bool is取消 = false;
         
         public Memberlogin()
         {
@@ -43,6 +44,7 @@ namespace WindowsFormsAppProject
             {
                 ID = ((int)reader["MemberID"]); //add存值 = 把MEMBERID存到陣列ID裡面去
                 GlobalVar.ID = ID;
+                GlobalVar.is登入成功 = true;
             }
 
 
@@ -64,9 +66,6 @@ namespace WindowsFormsAppProject
             cmd.Parameters.AddWithValue("@OrderTime", orderTime);          
                      
             
-
-
-
             int rows = cmd.ExecuteNonQuery();
             con.Close();
 
@@ -77,22 +76,25 @@ namespace WindowsFormsAppProject
             查詢ID();
 
             
-            if (ID > 0)
+            if (ID > 0) // 有沒有登入成功
             {
                 if (GlobalVar.is查看歷史訂單 == true)
-                {
-                    
+                {   // 查看歷史訂單
+                    GlobalVar.islogin取消 = false;
+                    MessageBox.Show("登入成功");
                     Close();
                     //Revenue revenue = new Revenue();
                     //revenue.ShowDialog();
 
                 }
                 else
-                {
+                {   // 點選結帳
+                    MessageBox.Show("登入成功");
                     產生訂單();
                     查詢購物車();
                     產生訂單明細();
-                    MessageBox.Show("登入成功");
+                    MessageBox.Show("謝謝惠顧");
+
 
 
                     OrderList orderList = new OrderList();
@@ -221,7 +223,30 @@ namespace WindowsFormsAppProject
 
         private void Memberlogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
+            if (GlobalVar.is登入成功 == true)
+            {
+                //MessageBox.Show("登入成功");
+            }
+            else
+            {
+                if (is取消 == false)
+                {
+                    e.Cancel = true;
+                }
+                //MessageBox.Show("登入失敗");
+
+            }
+            
+
+            
         }
-    }
+
+        private void btn取消_Click(object sender, EventArgs e)
+        {
+            is取消 = true;
+            GlobalVar.islogin取消 = true;
+            
+            Close();
+        }
+    }//----
 }
