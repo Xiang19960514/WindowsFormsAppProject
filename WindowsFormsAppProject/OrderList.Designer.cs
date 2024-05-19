@@ -135,6 +135,7 @@
             this.listView商品展示.Size = new System.Drawing.Size(685, 317);
             this.listView商品展示.TabIndex = 20;
             this.listView商品展示.UseCompatibleStateImageBehavior = false;
+            this.listView商品展示.Click += new System.EventHandler(this.listView商品展示_Click);
             // 
             // pictureBox1
             // 

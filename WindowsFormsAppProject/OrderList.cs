@@ -18,10 +18,11 @@ namespace WindowsFormsAppProject
         List<string> 單點名稱 = new List<string>();
         List<int> ID = new List<int>();
         List<string> 輸出訂單 = new List<string>();
-       
+        List<int> shoppingcartID = new List<int>();
         public List<int> 價格 = new List<int>();
         List<int> 數量 = new List<int>();
-        
+        int SelectIndex = 0;
+        int 總價 = 0;
 
 
 
@@ -37,10 +38,13 @@ namespace WindowsFormsAppProject
         }
 
         public void 購物車資料讀取()
-        {
+        {   
+            shoppingcartID.Clear();
+            價格.Clear();
+            數量.Clear();
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
-            string strSql = "select p.ProductID,productname,p.Price,s.Quantity from products p join shoppingcart s on p.productid = s.productid union all select s.setID,setname,shoppingcart.price,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid";
+            string strSql = "select s.shoppingcartID,p.ProductID,productname,p.Price,s.Quantity from products p join shoppingcart s on p.productid = s.productid union all select Shoppingcart.shoppingcartid,s.setID,setname,shoppingcart.price,shoppingcart.Quantity from setmeal s join shoppingcart on s.setid = shoppingcart.setid order by shoppingcartid ";
             SqlCommand cmd = new SqlCommand(strSql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             listView商品展示.Clear();
@@ -64,7 +68,7 @@ namespace WindowsFormsAppProject
                 item.Text = intId.ToString();//只有第一個是text 其他都是subitems
                 ID.Add(intId);
                 GlobalVar.產品編號.Add(intId);
-
+                shoppingcartID.Add((int)reader["shoppingcartID"]);
                 string productname = (string)reader["productname"];
                 item.SubItems.Add(productname);
                 GlobalVar.名稱.Add(productname);
@@ -174,10 +178,29 @@ namespace WindowsFormsAppProject
         }
 
         private void btn移除所選品項_Click(object sender, EventArgs e)
-        {          
+        {
+           
+          
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();
+            if (SelectIndex > -1) 
+            { 
+            string strSQL = "delete shoppingcart where shoppingcartID = @ID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@ID", shoppingcartID[SelectIndex]);
+            cmd.ExecuteNonQuery();
+            con.Close();
 
+            
+            購物車資料讀取();
+            }
+        }
 
-
+        private void listView商品展示_Click(object sender, EventArgs e)
+        {
+            SelectIndex = listView商品展示.SelectedIndices[0];
+            Console.WriteLine(SelectIndex);
+            Console.WriteLine(shoppingcartID[SelectIndex]);
         }
     }
 }
