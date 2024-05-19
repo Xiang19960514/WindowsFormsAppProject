@@ -128,7 +128,7 @@
             // btn商品下架
             // 
             this.btn商品下架.BackColor = System.Drawing.Color.LightCoral;
-            this.btn商品下架.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn商品下架.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn商品下架.Location = new System.Drawing.Point(447, 368);
             this.btn商品下架.Name = "btn商品下架";
             this.btn商品下架.Size = new System.Drawing.Size(138, 54);
@@ -151,6 +151,7 @@
             // 
             // cbox類別
             // 
+            this.cbox類別.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox類別.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cbox類別.FormattingEnabled = true;
             this.cbox類別.Location = new System.Drawing.Point(147, 102);
@@ -164,6 +165,7 @@
             this.txt商品描述.Location = new System.Drawing.Point(13, 268);
             this.txt商品描述.Multiline = true;
             this.txt商品描述.Name = "txt商品描述";
+            this.txt商品描述.ReadOnly = true;
             this.txt商品描述.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt商品描述.Size = new System.Drawing.Size(316, 96);
             this.txt商品描述.TabIndex = 95;
@@ -220,6 +222,7 @@
             // 
             // btn搜尋
             // 
+            this.btn搜尋.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn搜尋.Location = new System.Drawing.Point(335, 293);
             this.btn搜尋.Name = "btn搜尋";
             this.btn搜尋.Size = new System.Drawing.Size(106, 65);
@@ -285,7 +288,7 @@
             // btn欄位清除
             // 
             this.btn欄位清除.BackColor = System.Drawing.Color.LightCoral;
-            this.btn欄位清除.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn欄位清除.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn欄位清除.Location = new System.Drawing.Point(287, 368);
             this.btn欄位清除.Name = "btn欄位清除";
             this.btn欄位清除.Size = new System.Drawing.Size(154, 54);
@@ -297,7 +300,7 @@
             // btn商品修改
             // 
             this.btn商品修改.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn商品修改.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn商品修改.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn商品修改.Location = new System.Drawing.Point(147, 368);
             this.btn商品修改.Name = "btn商品修改";
             this.btn商品修改.Size = new System.Drawing.Size(134, 54);
@@ -309,7 +312,7 @@
             // btn商品上架
             // 
             this.btn商品上架.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn商品上架.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn商品上架.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn商品上架.Location = new System.Drawing.Point(7, 368);
             this.btn商品上架.Name = "btn商品上架";
             this.btn商品上架.Size = new System.Drawing.Size(134, 54);
@@ -442,6 +445,7 @@
             // btn套餐下架
             // 
             this.btn套餐下架.BackColor = System.Drawing.Color.LightCoral;
+            this.btn套餐下架.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn套餐下架.Location = new System.Drawing.Point(163, 246);
             this.btn套餐下架.Name = "btn套餐下架";
             this.btn套餐下架.Size = new System.Drawing.Size(155, 78);
@@ -465,6 +469,7 @@
             // btn欄位清除2
             // 
             this.btn欄位清除2.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn欄位清除2.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn欄位清除2.Location = new System.Drawing.Point(163, 167);
             this.btn欄位清除2.Name = "btn欄位清除2";
             this.btn欄位清除2.Size = new System.Drawing.Size(155, 73);
@@ -476,6 +481,7 @@
             // btn套餐修改
             // 
             this.btn套餐修改.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn套餐修改.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn套餐修改.Location = new System.Drawing.Point(0, 246);
             this.btn套餐修改.Name = "btn套餐修改";
             this.btn套餐修改.Size = new System.Drawing.Size(148, 78);
@@ -487,6 +493,7 @@
             // btn套餐上架
             // 
             this.btn套餐上架.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn套餐上架.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn套餐上架.Location = new System.Drawing.Point(0, 167);
             this.btn套餐上架.Name = "btn套餐上架";
             this.btn套餐上架.Size = new System.Drawing.Size(148, 73);
@@ -520,7 +527,7 @@
             // pbox套餐圖片
             // 
             this.pbox套餐圖片.BackColor = System.Drawing.Color.White;
-            this.pbox套餐圖片.Location = new System.Drawing.Point(334, 3);
+            this.pbox套餐圖片.Location = new System.Drawing.Point(324, 3);
             this.pbox套餐圖片.Name = "pbox套餐圖片";
             this.pbox套餐圖片.Size = new System.Drawing.Size(411, 426);
             this.pbox套餐圖片.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

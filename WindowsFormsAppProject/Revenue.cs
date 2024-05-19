@@ -34,7 +34,7 @@ namespace WindowsFormsAppProject
         }
         
 
-        void 購物車資料讀取()
+        public void 購物車資料讀取()
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
@@ -49,10 +49,10 @@ namespace WindowsFormsAppProject
             listView歷史訂單.View = View.Details;
 
             listView歷史訂單.Columns.Add("訂單ID", 80);
-            listView歷史訂單.Columns.Add("會員ID", 150);
-            listView歷史訂單.Columns.Add("商品名稱", 80);
-            listView歷史訂單.Columns.Add("數量", 50);
-            listView歷史訂單.Columns.Add("單價", 50);
+            listView歷史訂單.Columns.Add("會員ID", 80);
+            listView歷史訂單.Columns.Add("商品名稱", 180);
+            listView歷史訂單.Columns.Add("數量", 80);
+            listView歷史訂單.Columns.Add("單價", 80);
 
             listView歷史訂單.GridLines = true;
             listView歷史訂單.FullRowSelect = true;//藍色框框

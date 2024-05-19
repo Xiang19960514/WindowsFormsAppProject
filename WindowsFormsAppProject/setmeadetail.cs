@@ -17,7 +17,7 @@ namespace WindowsFormsAppProject
     public partial class setmealdetail : Form
     {
         int 取出後現有數量;
-        string 名稱;
+        
         
         public setmealdetail()
         {
@@ -53,7 +53,7 @@ namespace WindowsFormsAppProject
                
             }
             int i = 套餐價格.Sum() + discount;
-            //Console.WriteLine(i);測試用
+            Console.WriteLine(i);//測試用
 
             reader.Close();
             con.Close();
@@ -112,6 +112,12 @@ namespace WindowsFormsAppProject
             string strSQL = "";
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
+
+            if (txt商品數量.Text == "")
+            {
+                MessageBox.Show("請輸入正確數量");
+                return;
+            }
             
             if (GlobalVar.內容各別顯示 == 1) //1等於套餐
             {  
@@ -124,6 +130,11 @@ namespace WindowsFormsAppProject
                 else 
                 {
                     strSQL = "insert into ShoppingCart (setID,Quantity,Price) values (@ID,@Quantity,@Price)";
+                    //bool is轉型成功 = Int32.TryParse(txt商品數量.Text, out 取出後現有數量);
+                    //if (is轉型成功 == false) 
+                    //{
+                    //  MessageBox.Show("輸入格式不對");
+                    //}
                     取出後現有數量 = Convert.ToInt32(txt商品數量.Text);
                 }
                
@@ -145,6 +156,7 @@ namespace WindowsFormsAppProject
 
             SqlCommand cmd = new SqlCommand(strSQL, con);
             cmd.Parameters.AddWithValue("@ID", GlobalVar.商品ID);
+            GlobalVar.購物車商品名稱.Add(GlobalVar.商品ID);
             cmd.Parameters.AddWithValue("@Quantity", 取出後現有數量);
             cmd.Parameters.AddWithValue("@Price", txt商品價格.Text);
             cmd.ExecuteNonQuery();
@@ -154,7 +166,7 @@ namespace WindowsFormsAppProject
             MessageBox.Show("已加入購物車");
             con.Close();
             Close(); 
-            }
+        }
 
         private void btn購物車列表_Click(object sender, EventArgs e)
         {

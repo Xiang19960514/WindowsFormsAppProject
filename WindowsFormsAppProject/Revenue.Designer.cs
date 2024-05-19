@@ -33,6 +33,8 @@
             // 
             // listView歷史訂單
             // 
+            this.listView歷史訂單.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.listView歷史訂單.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listView歷史訂單.HideSelection = false;
             this.listView歷史訂單.Location = new System.Drawing.Point(13, 13);
             this.listView歷史訂單.Name = "listView歷史訂單";
@@ -44,7 +46,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(795, 448);
             this.Controls.Add(this.listView歷史訂單);
             this.Name = "Revenue";
             this.Text = "Revenue";

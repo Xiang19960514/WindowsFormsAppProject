@@ -39,15 +39,16 @@
             this.btn查看購物車 = new System.Windows.Forms.Button();
             this.btn系統管理 = new System.Windows.Forms.Button();
             this.btn歷史訂單 = new System.Windows.Forms.Button();
+            this.btn營業額 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView圖片
             // 
             this.listView圖片.HideSelection = false;
-            this.listView圖片.Location = new System.Drawing.Point(186, 23);
+            this.listView圖片.Location = new System.Drawing.Point(186, 38);
             this.listView圖片.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView圖片.Name = "listView圖片";
-            this.listView圖片.Size = new System.Drawing.Size(605, 562);
+            this.listView圖片.Size = new System.Drawing.Size(605, 635);
             this.listView圖片.TabIndex = 0;
             this.listView圖片.UseCompatibleStateImageBehavior = false;
             this.listView圖片.ItemActivate += new System.EventHandler(this.listView圖片_ItemActivate);
@@ -56,7 +57,7 @@
             // 
             this.btn套餐.BackColor = System.Drawing.Color.Salmon;
             this.btn套餐.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn套餐.Location = new System.Drawing.Point(9, 23);
+            this.btn套餐.Location = new System.Drawing.Point(9, 38);
             this.btn套餐.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn套餐.Name = "btn套餐";
             this.btn套餐.Size = new System.Drawing.Size(172, 51);
@@ -69,7 +70,7 @@
             // 
             this.btn主餐.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn主餐.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn主餐.Location = new System.Drawing.Point(8, 96);
+            this.btn主餐.Location = new System.Drawing.Point(8, 111);
             this.btn主餐.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn主餐.Name = "btn主餐";
             this.btn主餐.Size = new System.Drawing.Size(173, 51);
@@ -82,7 +83,7 @@
             // 
             this.btn配餐.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn配餐.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn配餐.Location = new System.Drawing.Point(8, 169);
+            this.btn配餐.Location = new System.Drawing.Point(8, 184);
             this.btn配餐.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn配餐.Name = "btn配餐";
             this.btn配餐.Size = new System.Drawing.Size(173, 51);
@@ -95,7 +96,7 @@
             // 
             this.btn飲料.BackColor = System.Drawing.Color.Plum;
             this.btn飲料.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn飲料.Location = new System.Drawing.Point(8, 243);
+            this.btn飲料.Location = new System.Drawing.Point(8, 258);
             this.btn飲料.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn飲料.Name = "btn飲料";
             this.btn飲料.Size = new System.Drawing.Size(173, 51);
@@ -108,7 +109,7 @@
             // 
             this.btn點心.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn點心.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn點心.Location = new System.Drawing.Point(8, 313);
+            this.btn點心.Location = new System.Drawing.Point(8, 328);
             this.btn點心.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn點心.Name = "btn點心";
             this.btn點心.Size = new System.Drawing.Size(173, 51);
@@ -125,9 +126,10 @@
             // 
             // btn查看購物車
             // 
-            this.btn查看購物車.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn查看購物車.BackColor = System.Drawing.Color.RosyBrown;
             this.btn查看購物車.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn查看購物車.Location = new System.Drawing.Point(8, 391);
+            this.btn查看購物車.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn查看購物車.Location = new System.Drawing.Point(9, 406);
             this.btn查看購物車.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn查看購物車.Name = "btn查看購物車";
             this.btn查看購物車.Size = new System.Drawing.Size(173, 51);
@@ -138,9 +140,9 @@
             // 
             // btn系統管理
             // 
-            this.btn系統管理.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn系統管理.BackColor = System.Drawing.Color.RosyBrown;
             this.btn系統管理.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn系統管理.Location = new System.Drawing.Point(8, 464);
+            this.btn系統管理.Location = new System.Drawing.Point(9, 478);
             this.btn系統管理.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn系統管理.Name = "btn系統管理";
             this.btn系統管理.Size = new System.Drawing.Size(173, 51);
@@ -151,9 +153,9 @@
             // 
             // btn歷史訂單
             // 
-            this.btn歷史訂單.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn歷史訂單.BackColor = System.Drawing.Color.RosyBrown;
             this.btn歷史訂單.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn歷史訂單.Location = new System.Drawing.Point(9, 532);
+            this.btn歷史訂單.Location = new System.Drawing.Point(9, 551);
             this.btn歷史訂單.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn歷史訂單.Name = "btn歷史訂單";
             this.btn歷史訂單.Size = new System.Drawing.Size(173, 51);
@@ -162,12 +164,26 @@
             this.btn歷史訂單.UseVisualStyleBackColor = false;
             this.btn歷史訂單.Click += new System.EventHandler(this.btn歷史訂單_Click);
             // 
+            // btn營業額
+            // 
+            this.btn營業額.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn營業額.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn營業額.Location = new System.Drawing.Point(8, 622);
+            this.btn營業額.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn營業額.Name = "btn營業額";
+            this.btn營業額.Size = new System.Drawing.Size(173, 51);
+            this.btn營業額.TabIndex = 9;
+            this.btn營業額.Text = "營業額查詢";
+            this.btn營業額.UseVisualStyleBackColor = false;
+            this.btn營業額.Click += new System.EventHandler(this.btn營業額_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(803, 594);
+            this.ClientSize = new System.Drawing.Size(803, 684);
+            this.Controls.Add(this.btn營業額);
             this.Controls.Add(this.btn歷史訂單);
             this.Controls.Add(this.btn系統管理);
             this.Controls.Add(this.btn查看購物車);
@@ -197,6 +213,7 @@
         private System.Windows.Forms.Button btn查看購物車;
         private System.Windows.Forms.Button btn系統管理;
         private System.Windows.Forms.Button btn歷史訂單;
+        private System.Windows.Forms.Button btn營業額;
     }
 }
 

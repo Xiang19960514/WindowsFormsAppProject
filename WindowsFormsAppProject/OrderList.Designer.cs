@@ -97,6 +97,7 @@
             this.btn移除所選品項.Text = "移除所選品項";
             this.btn移除所選品項.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn移除所選品項.UseVisualStyleBackColor = false;
+            this.btn移除所選品項.Click += new System.EventHandler(this.btn移除所選品項_Click);
             // 
             // lbl訂單總價
             // 

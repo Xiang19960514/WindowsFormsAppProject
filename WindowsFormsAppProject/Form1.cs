@@ -332,5 +332,11 @@ namespace WindowsFormsAppProject
             Revenue revenue = new Revenue();
             revenue.ShowDialog();
         }
+
+        private void btn營業額_Click(object sender, EventArgs e)
+        {
+            SalesRevenue revenue = new SalesRevenue();
+            revenue.ShowDialog();
+        }
     }
 }

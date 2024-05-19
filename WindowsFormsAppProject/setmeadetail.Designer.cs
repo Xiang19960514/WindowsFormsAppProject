@@ -49,6 +49,7 @@
             this.txt商品描述.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品描述.Multiline = true;
             this.txt商品描述.Name = "txt商品描述";
+            this.txt商品描述.ReadOnly = true;
             this.txt商品描述.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt商品描述.Size = new System.Drawing.Size(367, 168);
             this.txt商品描述.TabIndex = 15;
@@ -59,6 +60,7 @@
             this.txt商品價格.Location = new System.Drawing.Point(145, 90);
             this.txt商品價格.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品價格.Name = "txt商品價格";
+            this.txt商品價格.ReadOnly = true;
             this.txt商品價格.Size = new System.Drawing.Size(155, 34);
             this.txt商品價格.TabIndex = 14;
             // 
@@ -68,6 +70,7 @@
             this.txt商品名稱.Location = new System.Drawing.Point(145, 35);
             this.txt商品名稱.Margin = new System.Windows.Forms.Padding(4);
             this.txt商品名稱.Name = "txt商品名稱";
+            this.txt商品名稱.ReadOnly = true;
             this.txt商品名稱.Size = new System.Drawing.Size(219, 34);
             this.txt商品名稱.TabIndex = 13;
             // 
@@ -163,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(607, 429);
             this.Controls.Add(this.txt商品數量);
             this.Controls.Add(this.label1);

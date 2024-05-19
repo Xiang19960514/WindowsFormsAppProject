@@ -98,6 +98,7 @@ namespace WindowsFormsAppProject
 
 
                     OrderList orderList = new OrderList();
+                    orderList.購物車資料讀取();
                     orderList.輸出訂購單();
                     清除購物車資料();
                     Close();
@@ -248,5 +249,5 @@ namespace WindowsFormsAppProject
             
             Close();
         }
-    }//----
+    }
 }

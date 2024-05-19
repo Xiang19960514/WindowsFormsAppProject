@@ -18,9 +18,10 @@ namespace WindowsFormsAppProject
         List<string> 單點名稱 = new List<string>();
         List<int> ID = new List<int>();
         List<string> 輸出訂單 = new List<string>();
-        List<int> 套餐ID = new List<int>();
+       
         public List<int> 價格 = new List<int>();
         List<int> 數量 = new List<int>();
+        
 
 
 
@@ -35,7 +36,7 @@ namespace WindowsFormsAppProject
             購物車資料讀取();
         }
 
-        void 購物車資料讀取()
+        public void 購物車資料讀取()
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
@@ -70,12 +71,12 @@ namespace WindowsFormsAppProject
                 單點名稱.Add(productname);
 
                 int intPrice = (int)reader["Price"];
-                item.SubItems.Add(intPrice.ToString());////////////不改TOSTRING的話會有紅線 但不知道這樣改對不對
+                item.SubItems.Add(intPrice.ToString());
                 價格.Add(intPrice);
                 GlobalVar.價格.Add(intPrice);
 
                 int intQuantity = (int)reader["Quantity"];
-                item.SubItems.Add(intQuantity.ToString());///////////不改TOSTRING的話會有紅線 但不知道這樣改對不對
+                item.SubItems.Add(intQuantity.ToString());
                 數量.Add(intQuantity);
                 GlobalVar.數量.Add(intQuantity);
                
@@ -95,7 +96,8 @@ namespace WindowsFormsAppProject
         }
         public void 輸出訂購單()
         {
-            string str預設檔案目錄 = @"C:/";
+            
+            string str預設檔案目錄 = @"C:\Users\del79\OneDrive\桌面";
             Random myRnd = new Random();
             int numRnd = myRnd.Next(1000, 10000);
             string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + numRnd + "訂單明細.txt";
@@ -171,5 +173,11 @@ namespace WindowsFormsAppProject
             Close();
         }
 
+        private void btn移除所選品項_Click(object sender, EventArgs e)
+        {          
+
+
+
+        }
     }
 }

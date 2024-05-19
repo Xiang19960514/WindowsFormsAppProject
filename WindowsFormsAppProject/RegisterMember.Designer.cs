@@ -51,17 +51,17 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(64, 218);
+            this.label14.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label14.Location = new System.Drawing.Point(81, 230);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 30);
+            this.label14.Size = new System.Drawing.Size(71, 36);
             this.label14.TabIndex = 152;
             this.label14.Text = "生日";
             // 
             // dtp生日
             // 
             this.dtp生日.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtp生日.Location = new System.Drawing.Point(142, 218);
+            this.dtp生日.Location = new System.Drawing.Point(159, 230);
             this.dtp生日.Margin = new System.Windows.Forms.Padding(2);
             this.dtp生日.Name = "dtp生日";
             this.dtp生日.Size = new System.Drawing.Size(221, 38);
@@ -69,9 +69,12 @@
             // 
             // cbx性別
             // 
+            this.cbx性別.CausesValidation = false;
+            this.cbx性別.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx性別.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cbx性別.FormattingEnabled = true;
-            this.cbx性別.Location = new System.Drawing.Point(143, 131);
+            this.cbx性別.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cbx性別.Location = new System.Drawing.Point(160, 143);
             this.cbx性別.Name = "cbx性別";
             this.cbx性別.Size = new System.Drawing.Size(167, 33);
             this.cbx性別.TabIndex = 148;
@@ -79,17 +82,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(64, 174);
+            this.label9.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label9.Location = new System.Drawing.Point(81, 186);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 30);
+            this.label9.Size = new System.Drawing.Size(71, 36);
             this.label9.TabIndex = 144;
             this.label9.Text = "電話";
             // 
             // txt會員名稱
             // 
             this.txt會員名稱.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt會員名稱.Location = new System.Drawing.Point(143, 84);
+            this.txt會員名稱.Location = new System.Drawing.Point(160, 96);
             this.txt會員名稱.Name = "txt會員名稱";
             this.txt會員名稱.Size = new System.Drawing.Size(167, 31);
             this.txt會員名稱.TabIndex = 140;
@@ -97,7 +100,7 @@
             // txt會員編號
             // 
             this.txt會員編號.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt會員編號.Location = new System.Drawing.Point(143, 40);
+            this.txt會員編號.Location = new System.Drawing.Point(160, 52);
             this.txt會員編號.Name = "txt會員編號";
             this.txt會員編號.ReadOnly = true;
             this.txt會員編號.Size = new System.Drawing.Size(167, 31);
@@ -107,7 +110,7 @@
             // txt電話
             // 
             this.txt電話.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt電話.Location = new System.Drawing.Point(143, 174);
+            this.txt電話.Location = new System.Drawing.Point(160, 187);
             this.txt電話.Name = "txt電話";
             this.txt電話.Size = new System.Drawing.Size(167, 31);
             this.txt電話.TabIndex = 138;
@@ -116,7 +119,7 @@
             // 
             this.btn新增會員.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btn新增會員.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn新增會員.Location = new System.Drawing.Point(6, 275);
+            this.btn新增會員.Location = new System.Drawing.Point(6, 274);
             this.btn新增會員.Name = "btn新增會員";
             this.btn新增會員.Size = new System.Drawing.Size(178, 59);
             this.btn新增會員.TabIndex = 136;
@@ -127,30 +130,30 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(64, 130);
+            this.label11.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label11.Location = new System.Drawing.Point(81, 142);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 30);
+            this.label11.Size = new System.Drawing.Size(71, 36);
             this.label11.TabIndex = 135;
             this.label11.Text = "性別";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(4, 84);
+            this.label12.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Location = new System.Drawing.Point(29, 94);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 30);
+            this.label12.Size = new System.Drawing.Size(127, 36);
             this.label12.TabIndex = 134;
             this.label12.Text = "會員名稱";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(5, 43);
+            this.label13.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(30, 50);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(133, 30);
+            this.label13.Size = new System.Drawing.Size(127, 36);
             this.label13.TabIndex = 132;
             this.label13.Text = "會員編號";
             // 
@@ -184,7 +187,7 @@
             this.groupBox1.Controls.Add(this.txt會員名稱);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btn搜尋);
-            this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox1.Location = new System.Drawing.Point(0, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(807, 405);
@@ -195,7 +198,7 @@
             // btn修改會員
             // 
             this.btn修改會員.BackColor = System.Drawing.Color.PeachPuff;
-            this.btn修改會員.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn修改會員.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn修改會員.Location = new System.Drawing.Point(6, 340);
             this.btn修改會員.Name = "btn修改會員";
             this.btn修改會員.Size = new System.Drawing.Size(178, 59);

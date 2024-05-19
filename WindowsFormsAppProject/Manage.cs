@@ -17,8 +17,8 @@ namespace WindowsFormsAppProject
         public int loadId = 0;
         string str修改後圖檔名稱 = "";
         bool is修改圖檔 = false;
-        List<string> list類別 = new List<string>();
-        string 類別 = "";
+        //List<string> list類別 = new List<string>();
+        //string 類別 = "";
         int dgv筆數 = 0;
         int dgv筆數2 = 0;
         string image檔名;
@@ -43,7 +43,7 @@ namespace WindowsFormsAppProject
             cbox欄位名稱.Items.Add("Price");
             cbox欄位名稱.Items.Add("Category");
             cbox欄位名稱.Items.Add("Description");
-           
+            cbox欄位名稱.SelectedIndex = 0;
             顯示所有商品();
           
             顯示所有商品2();
@@ -318,14 +318,15 @@ namespace WindowsFormsAppProject
             if (txt套餐名稱.Text != "" && txt套餐折扣.Text != "" && pbox套餐圖片.Image != null) //空字串不等於null 所以要改成null
             {
                 SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
-                con.Open();
-                string strSQL = "insert into setmeal values(@setname , @discount , @Pictures)";
+                con.Open();   //SQL有4個欄位 但我只要輸入3個欄位的話 values之前要在加欄位名稱
+                string strSQL = "insert into setmeal (setname, setdiscount,Pictures) values (@setname , @setdiscount , @Pictures)";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
 
                 cmd.Parameters.AddWithValue("@setname", txt套餐名稱.Text);
                 int discount = 0;
                 Int32.TryParse(txt套餐折扣.Text, out discount);
-                cmd.Parameters.AddWithValue("@discount", discount);
+                cmd.Parameters.AddWithValue("@setdiscount", discount);
+                //cmd.Parameters.AddWithValue("@description", txt商品描述);
 
 
                 if (is修改圖檔 == true)
@@ -410,7 +411,7 @@ namespace WindowsFormsAppProject
             con.Open();
             string strSQL = "Delete setmeal where setID =@setID";
             SqlCommand cmd = new SqlCommand(strSQL, con);
-            cmd.Parameters.Add("@setID", txt套餐編號.Text);
+            cmd.Parameters.AddWithValue("@setID", txt套餐編號.Text);
 
             int num = cmd.ExecuteNonQuery();
             con.Close();
